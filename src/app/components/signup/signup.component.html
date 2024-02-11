@@ -1,1 +1,51 @@
-<p>signup works!</p>
+<div class="form-signin w-100 m-auto">
+  <form
+    [formGroup]="signupForm"
+    (ngSubmit)="registerUser()"
+  >
+    <h3 class="h3 mb-3 font-weight-normal text-center">Inscrivez vous</h3>
+    <div class="mb-3">
+      <label>Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="nom"
+        placeholder="Votre nom"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label>Prénom</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="prenom"
+        placeholder="Votre prénom"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label>Adresse mail</label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        placeholder="Votre email"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label>Mot de passe</label>
+      <input
+        type="password"
+        class="form-control"
+        formControlName="motDePasse"
+        placeholder="motDePasse"
+        required
+      />
+    </div>
+    <div class="d-grid">
+      <button type="submit" class="btn btn-block btn-primary">Envoyer</button>
+    </div>
+  </form>
+</div>
