@@ -1,7 +1,7 @@
 import {PaysOutput} from './pays-output';
 
 export interface UtilisateurOutput {
-  _utilisateurId: number;
+  utilisateurId: number;
   prenom: String;
   nom: String;
   email: String;

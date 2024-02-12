@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import {ClientRegistrationInput} from "../model/input/client-registration-input";
 import {LoginInput} from "../model/input/login-input";
+import {UtilisateurOutput} from "../model/output/utilisateur-output";
 @Injectable({
   providedIn: 'root',
 })
@@ -45,9 +46,9 @@ export class AuthService {
     return authToken !== null;
   }
   // User profile
-  getUserProfile(id: any): Observable<any> {
+  getUserProfile(id: any): Observable<UtilisateurOutput> {
     let api = `${this.endpoint}/utilisateurs/${id}`;
-    return this.http.get(api, { headers: this.headers }).pipe(
+    return this.http.get<UtilisateurOutput>(api, { headers: this.headers }).pipe(
       map((res) => {
         return res || {};
       }),
