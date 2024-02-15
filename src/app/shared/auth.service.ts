@@ -15,7 +15,8 @@ import {UtilisateurOutput} from "../model/output/utilisateur-output";
 })
 export class AuthService {
   endpoint: string = 'http://localhost:8000';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  headers // = new HttpHeaders().set('Content-Type', 'application/json');
+  = new HttpHeaders();
   currentUser = {};
 
   constructor(private http: HttpClient, public router: Router) {
