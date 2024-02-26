@@ -10,6 +10,27 @@ import { Router } from '@angular/router';
 import {ClientRegistrationInput} from "../model/input/client-registration-input";
 import {LoginInput} from "../model/input/login-input";
 import {UtilisateurOutput} from "../model/output/utilisateur-output";
+import {LoginOutput} from "../model/output/login-output";
+import {ApiCallerService} from "../service/api-caller.service";
+
+const dummyUtilisateurOutput:UtilisateurOutput = {
+  utilisateurId : 0,
+  prenom : "",
+  nom : "",
+  email: ""
+};
+
+const dummyLoginOutput:LoginOutput = {
+  codeErreur: 1,
+  utilisateurConnecte: dummyUtilisateurOutput
+};
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Access-Control-Allow-Origin':'*'
+  })
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -17,9 +38,11 @@ export class AuthService {
   endpoint: string = 'http://localhost:8000';
   headers // = new HttpHeaders().set('Content-Type', 'application/json');
   = new HttpHeaders();
-  currentUser = {};
+  currentUser = dummyUtilisateurOutput;
 
-  constructor(private http: HttpClient, public router: Router) {
+  constructor(private http: HttpClient,
+              private apiCaller: ApiCallerService,
+              public router: Router) {
   }
   // Sign-up
   signUp(input: ClientRegistrationInput): Observable<any> {
@@ -28,23 +51,18 @@ export class AuthService {
   }
   // Sign-in
   signIn(loginInput: LoginInput) {
-    return this.http
-      .post<any>(`${this.endpoint}/auth/login`, loginInput)
-      .subscribe((res: any) => {
-        localStorage.setItem('access_token', res.token);
-        this.getUserProfile(res.utilisateurId).subscribe((res) => {
-          this.currentUser = res;
-          this.router.navigate(['user-profile/' + res.utilisateurId]);
-        });
+    return this.apiCaller.login(loginInput)
+      .subscribe((loginOutput: any) => {
+        console.log("This is the res :");
+        console.log(loginOutput);
+        console.log("This is where the res ends.");
+        this.currentUser = loginOutput.utilisateurConnecte;
+        this.router.navigate(['user-profile/']);
       });
   }
 
-  getToken() {
-    return localStorage.getItem('access_token');
-  }
   get isLoggedIn(): boolean {
-    let authToken = localStorage.getItem('access_token');
-    return authToken !== null;
+    return this.currentUser.utilisateurId !==0;
   }
   // User profile
   getUserProfile(id: any): Observable<UtilisateurOutput> {
@@ -57,7 +75,7 @@ export class AuthService {
     );
   }
   doLogout() {
-    localStorage.removeItem('access_token');
+    this.currentUser = dummyUtilisateurOutput;
     this.router.navigate(['log-in']);
 
   }

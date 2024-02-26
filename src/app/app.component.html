@@ -16,10 +16,18 @@
     *ngIf="!this.authService.isLoggedIn"
     class="btn btn-primary"
     routerLinkActive="active"
-    routerLinkActive="active"
     routerLink="/sign-up"
   >Sign up</a
   >
+  <a
+    *ngIf="!this.authService.isLoggedIn"
+    class="btn btn-primary"
+    routerLinkActive="active"
+    routerLink="/make-reservation"
+  >Make a reservation</a
+  >
+
+
   <button
     (click)="logout()"
     *ngIf="this.authService.isLoggedIn"

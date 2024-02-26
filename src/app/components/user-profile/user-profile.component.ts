@@ -8,20 +8,12 @@ import { UtilisateurOutput } from '../../model/output/utilisateur-output';
   styleUrls: ['./user-profile.component.css'],
 })
 export class UserProfileComponent implements OnInit {
-  currentUser: UtilisateurOutput = {
-    email: "",
-    nom: "",
-    prenom: "",
-    utilisateurId: 0
-  };
+  currentUser: UtilisateurOutput
   constructor(
     public authService: AuthService,
     private actRoute: ActivatedRoute
   ) {
-    let id = this.actRoute.snapshot.paramMap.get('id');
-    this.authService.getUserProfile(id).subscribe((res) => {
-      this.currentUser = res;
-    });
+      this.currentUser = this.authService.currentUser;
   }
   ngOnInit() {}
 }

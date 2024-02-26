@@ -5,18 +5,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module'
 
-import { AuthInterceptor } from './shared/authconfig.interceptor';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { MakeReservationComponent } from './components/make-reservation/make-reservation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
     SignupComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    MakeReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -27,11 +28,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     AppRoutingModule
   ],
   providers: [
-    {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }
+
   ],
   bootstrap: [AppComponent]
 })
