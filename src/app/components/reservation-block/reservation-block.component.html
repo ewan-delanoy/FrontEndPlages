@@ -1,0 +1,21 @@
+<span *ngIf="reservations.list.length === 0">
+    Aucune.</span><br>
+
+<div *ngIf="reservations.list.length !== 0">
+
+  <table>
+    <tbody>
+    <tr *ngFor="let reservation of reservations.list">
+      {{ reservation.plage.nom }}
+      du {{ reservation.dateDebut }} au {{ reservation.dateFin }},
+      {{ reservation.affectations.length }} parasols.
+      <a *ngIf="reservations.userIsAManager && reservations.notYetTreated"
+         (click)="seeReservationDetail(true,reservation)" > Traiter </a>
+      <a *ngIf="!(reservations.userIsAManager && reservations.notYetTreated)"
+         (click)="seeReservationDetail(false,reservation)" > Voir plus</a>
+      <br>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

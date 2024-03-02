@@ -1,0 +1,6 @@
+<span class="bold-class"> Vos réservations en attente : </span>
+<app-reservation-block [reservations]="tripleReservation.enAttente"></app-reservation-block>
+<span class="bold-class"> Vos réservations acceptées : </span>
+<app-reservation-block [reservations]="tripleReservation.acceptees"></app-reservation-block>
+<span class="bold-class"> Vos réservations refusées : </span>
+<app-reservation-block [reservations]="tripleReservation.refusees"></app-reservation-block>
