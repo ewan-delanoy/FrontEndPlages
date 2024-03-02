@@ -12,24 +12,8 @@ import {LoginInput} from "../model/input/login-input";
 import {UtilisateurOutput} from "../model/output/utilisateur-output";
 import {LoginOutput} from "../model/output/login-output";
 import {ApiCallerService} from "../service/api-caller.service";
+import {dummyUtilisateurOutput, ID_UTILISATEUR_INEXISTANT} from "../model/constants";
 
-const dummyUtilisateurOutput:UtilisateurOutput = {
-  utilisateurId : 0,
-  prenom : "",
-  nom : "",
-  email: ""
-};
-
-const dummyLoginOutput:LoginOutput = {
-  codeErreur: 1,
-  utilisateurConnecte: dummyUtilisateurOutput
-};
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Access-Control-Allow-Origin':'*'
-  })
-};
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +23,7 @@ export class AuthService {
   headers // = new HttpHeaders().set('Content-Type', 'application/json');
   = new HttpHeaders();
   currentUser = dummyUtilisateurOutput;
+
 
   constructor(private http: HttpClient,
               private apiCaller: ApiCallerService,
@@ -53,16 +38,19 @@ export class AuthService {
   signIn(loginInput: LoginInput) {
     return this.apiCaller.login(loginInput)
       .subscribe((loginOutput: any) => {
-        console.log("This is the res :");
-        console.log(loginOutput);
-        console.log("This is where the res ends.");
         this.currentUser = loginOutput.utilisateurConnecte;
-        this.router.navigate(['user-profile/']);
+        if(this.currentUser.typeUtilisateur === 'Client') {
+          this.router.navigate(['client-profile/']);
+        }
+        if(this.currentUser.typeUtilisateur === 'Concessionnaire') {
+          this.router.navigate(['manager-profile/']);
+        }
+        console.log(`typeUtilisateur ${this.currentUser.typeUtilisateur} not read correctly`);
       });
   }
 
   get isLoggedIn(): boolean {
-    return this.currentUser.utilisateurId !==0;
+    return this.currentUser.utilisateurId !== ID_UTILISATEUR_INEXISTANT;
   }
   // User profile
   getUserProfile(id: any): Observable<UtilisateurOutput> {

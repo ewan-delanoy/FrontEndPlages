@@ -7,5 +7,6 @@ export interface UtilisateurOutput {
   email: String;
   pays?: PaysOutput;
   dateHeureInscription?: Date;
-  numeroDeTelephone?: String
+  numeroDeTelephone?: String;
+  typeUtilisateur: String;
 }
