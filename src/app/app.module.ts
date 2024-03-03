@@ -14,6 +14,8 @@ import { ReservationBlockComponent } from './components/reservation-block/reserv
 import { ClientProfileComponent } from './components/client-profile/client-profile.component';
 import { ManagerProfileComponent } from './components/manager-profile/manager-profile.component';
 import { ReservationDetailComponent } from './components/reservation-detail/reservation-detail.component';
+import { FrencheuroPipe } from './pipes/frencheuro.pipe';
+import { EquipementPipe } from './pipes/equipement.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ReservationDetailComponent } from './components/reservation-detail/rese
     ReservationBlockComponent,
     ClientProfileComponent,
     ManagerProfileComponent,
-    ReservationDetailComponent
+    ReservationDetailComponent,
+    FrencheuroPipe,
+    EquipementPipe
   ],
   imports: [
     BrowserModule,

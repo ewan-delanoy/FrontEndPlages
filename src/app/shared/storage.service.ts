@@ -7,7 +7,21 @@ import {dummyReservationOutput} from "../model/constants";
 })
 export class StorageService {
 
-  currentReservation: ReservationOutput = dummyReservationOutput
+
   treatmentAllowedOnReservation: boolean = false
+  private viewedReservation: ReservationOutput = dummyReservationOutput
+  totalPrice: number = 0
   constructor() { }
+
+  getViewedReservation():  ReservationOutput {
+    return this.viewedReservation;
+  }
+  setViewedReservation(newReservation:ReservationOutput) {
+    this.viewedReservation = newReservation
+    this.totalPrice =
+    newReservation.affectations.reduce(
+       (sum, affectation) => sum + affectation.prixJournalierFile, 0)
+
+  }
+
 }

@@ -1,1 +1,39 @@
-<p>reservation-detail works!</p>
+<button
+  (click)="treatReservation(false)"
+  *ngIf="treatmentAllowedOnReservation"
+  type="button"
+  class="btn btn-success"
+>Accepter</button>
+
+<button
+  (click)="treatReservation(true)"
+  *ngIf="treatmentAllowedOnReservation"
+  type="button"
+  class="btn btn-danger"
+>Refuser</button>
+
+Réservation numéro {{ reservation.reservationId }} <br>
+
+Plage {{ reservation.plage.nom }} <br>
+
+Date début : {{ reservation.dateDebut }} <br>
+
+Date fin : {{ reservation.dateFin }} <br>
+
+Parasols : <br>
+
+<li *ngFor="let affectation of reservation.affectations">
+   <ul> File {{affectation.numeroFile}},
+        Prix {{affectation.prixJournalierFile | frencheuro }},
+        emplacement {{affectation.numEmplacement}},
+        {{ 10*affectation.nbDeLits  + affectation.nbDeFauteuils | equipement }}
+        </ul>
+</li>
+
+Prix total <span *ngIf="reservation.lienDeParente.nom !== 'Aucun lien'">avant remise</span> :
+{{totalPrice | frencheuro }}<br>
+<div *ngIf="reservation.lienDeParente.nom !== 'Aucun lien'">
+  Réduction familiale : {{ reservation.lienDeParente.coefficient }} <br>
+  Total final : {{totalPrice | frencheuro}} x {{ reservation.lienDeParente.coefficient }} =
+  {{totalPrice*reservation.lienDeParente.coefficient | frencheuro }}
+</div>

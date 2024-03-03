@@ -18,11 +18,7 @@ export class ApiCallerService {
   clientsUrl:string = `${this.endpoint}/api/clients/` ;
   constructor(private http: HttpClient) { }
 
-  login(loginInput: LoginInput) {
-    return this.http
-      .post<LoginOutput>(this.loginUrl, loginInput);
-  }
-
+  editReservationStatus()
 
   getReservationsForClient(clientId: number) {
     const finalUrl= `${this.endpoint}/api/clients/${clientId}/reservations`;
@@ -38,6 +34,11 @@ export class ApiCallerService {
     console.log(finalUrl);
     return this.http
       .get<TripleReservationOutput>(finalUrl);
+  }
+
+  login(loginInput: LoginInput) {
+    return this.http
+      .post<LoginOutput>(this.loginUrl, loginInput);
   }
 
 

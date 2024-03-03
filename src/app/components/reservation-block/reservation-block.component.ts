@@ -5,6 +5,7 @@ import {ReservationListFrontEnd} from "../../model/front-end/reservation-list-fr
 import {AuthService} from "../../shared/auth.service";
 import {StorageService} from "../../shared/storage.service";
 import {dummyTripleReservation} from "../../model/constants";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-reservation-block',
@@ -15,11 +16,14 @@ export class ReservationBlockComponent {
   @Input()
   reservations!: ReservationListFrontEnd
 
-  constructor(public storageService: StorageService) {
+  constructor(public storageService: StorageService,
+              public router: Router) {
 
   }
   seeReservationDetail(allowTreatment:boolean,reservation:ReservationOutput) {
+    console.log("Entering seeReservationDetail")
     this.storageService.treatmentAllowedOnReservation = allowTreatment
-    this.storageService.currentReservation = reservation
+    this.storageService.setViewedReservation(reservation)
+    this.router.navigate(['reservation-detail/'])
   }
 }
