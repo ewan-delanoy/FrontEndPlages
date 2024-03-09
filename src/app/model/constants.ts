@@ -31,6 +31,7 @@ export const dummyTripleReservation:TripleReservationFrontEnd = {
 };
 
 const dummyConcessionnaireOutput:ConcessionnaireOutput= {
+  concessionnaireId: 0,
   prenom :"",
   nom: "",
   email: "",

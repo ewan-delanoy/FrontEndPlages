@@ -27,7 +27,17 @@ export class ReservationDetailComponent {
     this.totalPrice = this.storageService.totalPrice
   }
   treatReservation(accepted:boolean) {
-    this.router.navigate(['reservation-detail/']);
+    const statusName = accepted? 'Acceptee': 'Refusee';
+    const concessionnaireId = this.reservation.plage.concessionnaire.concessionnaireId;
+    console.log('This is the reservation :');
+    console.log(this.reservation);
+    const reservationId = this.reservation.reservationId;
+    this.apiCaller.editReservationStatus(concessionnaireId,reservationId,statusName)
+      .subscribe((result: any) => {
+        this.router.navigate(['manager-profile/']);
+      });
+
+
   }
 
 }

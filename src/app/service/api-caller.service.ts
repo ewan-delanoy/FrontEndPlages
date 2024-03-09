@@ -18,7 +18,12 @@ export class ApiCallerService {
   clientsUrl:string = `${this.endpoint}/api/clients/` ;
   constructor(private http: HttpClient) { }
 
-  editReservationStatus()
+  editReservationStatus(concessionnaireId: number,reservationId:number,statusName:string) {
+    const finalUrl= `${this.endpoint}/api/concessionnaires/${concessionnaireId}/reservations/${reservationId}`;
+    console.log("The final manager-reservation url is : ");
+    console.log(finalUrl);
+    return this.http.post(finalUrl,statusName);
+  }
 
   getReservationsForClient(clientId: number) {
     const finalUrl= `${this.endpoint}/api/clients/${clientId}/reservations`;

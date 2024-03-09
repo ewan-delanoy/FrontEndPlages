@@ -10,6 +10,6 @@ export class TripleReservationFrontEnd {
   constructor(userIsAManager: boolean,original:TripleReservationOutput) {
      this.enAttente = new ReservationListFrontEnd(userIsAManager,true,original.enAttente)
      this.acceptees = new ReservationListFrontEnd(userIsAManager,false,original.acceptees)
-     this.refusees = new ReservationListFrontEnd(userIsAManager,false,original.acceptees)
+     this.refusees = new ReservationListFrontEnd(userIsAManager,false,original.refusees)
   }
 }

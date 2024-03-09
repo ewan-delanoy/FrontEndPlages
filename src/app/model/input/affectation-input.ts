@@ -1,6 +1,8 @@
 
 export interface AffectationInput {
-  emplacementId: number;
-  nbDeLits: number;
-  nbDeFauteuils : number[]
+  emplacementId: number
+  numeroFile: number
+  numEmplacement: number
+  nbDeLits: number
+  nbDeFauteuils : number
 }
