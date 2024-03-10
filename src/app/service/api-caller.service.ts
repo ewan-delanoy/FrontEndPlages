@@ -7,6 +7,8 @@ import {TripleReservationOutput} from "../model/output/triple-reservation-output
 import {PlageOutput} from "../model/output/plage-output";
 import {catchError} from "rxjs/operators";
 import {ClientRegistrationInput} from "../model/input/client-registration-input";
+import {PreparationReservationInput} from "../model/input/preparation-reservation-input";
+import {PreparationReservationOutput} from "../model/output/preparation-reservation-output";
 
 
 
@@ -20,21 +22,26 @@ export class ApiCallerService {
   loginUrl:string = `${this.endpoint}/api/connexion` ;
   plagesUrl:string = `${this.endpoint}/api/plages` ;
   clientInscriptionUrl:string = `${this.endpoint}/api/clients` ;
+  preparationUrl:string = `${this.endpoint}/api/clients/form-data` ;
   constructor(private http: HttpClient) { }
 
   editReservationStatus(concessionnaireId: number,reservationId:number,statusName:string) {
     const finalUrl= `${this.endpoint}/api/concessionnaires/${concessionnaireId}/reservations/${reservationId}`;
-    console.log("The final manager-reservation url is : ");
-    console.log(finalUrl);
     return this.http
       .post(finalUrl,statusName)
       .pipe(catchError(this.handleError));
   }
 
+
+
+  getPlages():Observable<PlageOutput[]> {
+    return this.http
+      .get<PlageOutput[]>(this.plagesUrl)
+      .pipe(catchError(this.handleError));
+  }
+
   getReservationsForClient(clientId: number):Observable<TripleReservationOutput> {
     const finalUrl= `${this.endpoint}/api/clients/${clientId}/reservations`;
-    console.log("The final client url is : ");
-    console.log(finalUrl);
     return this.http
       .get<TripleReservationOutput>(finalUrl)
       .pipe(catchError(this.handleError));
@@ -42,25 +49,10 @@ export class ApiCallerService {
 
   getReservationsForManager(managerId: number):Observable<TripleReservationOutput> {
     const finalUrl= `${this.endpoint}/api/concessionnaires/${managerId}/reservations`;
-    console.log("The final manager url is : ");
-    console.log(finalUrl);
     return this.http
       .get<TripleReservationOutput>(finalUrl)
       .pipe(catchError(this.handleError));
   }
-
-  getPlages():Observable<PlageOutput[]> {
-    return this.http
-      .get<PlageOutput[]>(this.plagesUrl)
-      .pipe(catchError(this.handleError));
-  }
-  login(loginInput: LoginInput) {
-    return this.http
-      .post<LoginOutput>(this.loginUrl, loginInput)
-      .pipe(catchError(this.handleError));
-
-  }
-
   handleError(error: HttpErrorResponse) {
     let msg = '';
     if (error.error instanceof ErrorEvent) {
@@ -72,6 +64,19 @@ export class ApiCallerService {
     }
     return throwError( () => new Error(msg));
   }
+  login(loginInput: LoginInput) {
+    return this.http
+      .post<LoginOutput>(this.loginUrl, loginInput)
+      .pipe(catchError(this.handleError));
+
+  }
+
+  prepareForm(prepInput:PreparationReservationInput): Observable<PreparationReservationOutput> {
+    return this.http
+      .post<PreparationReservationOutput>(this.preparationUrl, prepInput)
+      .pipe(catchError(this.handleError));
+  }
+
 
   signUp(newClientData:ClientRegistrationInput) {
     return this.http

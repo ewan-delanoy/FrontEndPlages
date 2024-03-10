@@ -4,6 +4,8 @@ import {PlageOutput} from "../../model/output/plage-output";
 import {MatDatepickerInputEvent} from "@angular/material/datepicker";
 import {StorageService} from "../../shared/storage.service";
 import {ParasolChooserFrontEnd} from "../../model/front-end/parasol-chooser-front-end";
+import {PreparationReservationOutput} from "../../model/output/preparation-reservation-output";
+import {PreparationReservationInput} from "../../model/input/preparation-reservation-input";
 
 @Component({
   selector: 'app-reservation-starter',
@@ -45,7 +47,7 @@ export class ReservationStarterComponent {
       {return plage.nom === nomPlage})
     console.log("just found :",plage)
     if (plage !== undefined) this.storage.reservationStarter.plage = plage
-    this.starterIsComplete = this.storage.reservationStarter.isComplete()
+    this.checkReservationStarterCompletion()
   }
 
   handleDateDebutChange(event: MatDatepickerInputEvent<Date>):void {
@@ -53,7 +55,7 @@ export class ReservationStarterComponent {
       return;
     } else {
       this.storage.reservationStarter.dateDebut = event.value
-      this.starterIsComplete = this.storage.reservationStarter.isComplete()
+      this.checkReservationStarterCompletion()
     }
   }
 
@@ -62,7 +64,7 @@ export class ReservationStarterComponent {
       return;
     } else {
       this.storage.reservationStarter.dateFin = event.value
-      this.starterIsComplete = this.storage.reservationStarter.isComplete()
+      this.checkReservationStarterCompletion()
     }
   }
 
@@ -87,5 +89,37 @@ export class ReservationStarterComponent {
     return this.consistencyCheck(this.storage.reservationStarter.dateDebut,d);
   };
 
+  // appelée après chaque modification venant de l'utilisateur depuis ce composant
+  checkReservationStarterCompletion():void {
+    if(this.starterIsComplete) {
+      return;
+    }
+    if(this.storage.reservationStarter.plage === null) {
+      return;
+    } else {
+      const plageNotNull:PlageOutput = this.storage.reservationStarter.plage
+      if(this.storage.reservationStarter.dateDebut === null) {
+        return;
+      } else {
+        const dateDebutNotNull:Date = this.storage.reservationStarter.dateDebut
+        if(this.storage.reservationStarter.dateFin === null) {
+          return;
+        } else {
+          const dateFinNotNull:Date = this.storage.reservationStarter.dateFin
+          const prepInput:PreparationReservationInput = {
+            plageId : plageNotNull.plageId,
+            dateDebut: dateDebutNotNull,
+            dateFin : dateFinNotNull
+          }
+          this.apiCaller.prepareForm(prepInput).subscribe(
+            (prep: PreparationReservationOutput) => {
+              this.parasolChooser = new ParasolChooserFrontEnd(prep)
+              this.starterIsComplete = true
+            }
+          )
+        }
+      }
+    }
+  }
 
 }
