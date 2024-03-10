@@ -22,6 +22,8 @@ import { MAT_DATE_LOCALE, MatNativeDateModule } from "@angular/material/core";
 import { ReservationStarterComponent } from './components/reservation-starter/reservation-starter.component';
 import { ParasolChooserComponent } from './components/parasol-chooser/parasol-chooser.component';
 import { ParasolComponent } from './components/parasol/parasol.component';
+import { ReductionPipe } from './pipes/reduction.pipe';
+import { ReservationOverviewerComponent } from './components/reservation-overviewer/reservation-overviewer.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ParasolComponent } from './components/parasol/parasol.component';
     EquipementPipe,
     ReservationStarterComponent,
     ParasolChooserComponent,
-    ParasolComponent
+    ParasolComponent,
+    ReductionPipe,
+    ReservationOverviewerComponent
   ],
   imports: [
     BrowserModule,

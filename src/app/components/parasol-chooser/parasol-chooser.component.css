@@ -1,0 +1,22 @@
+.scroll-view {
+  height: 300px;
+  /* Adjust the height as needed (10 times the row height) */
+  overflow: auto;
+  border: 1px solid #ccc;
+}
+
+.tdOnTheSand {
+  background-color : yellow;
+  margin: 0;
+  padding: 0;
+}
+
+.tdOnTheSea {
+  background-color : blue;
+  margin: 0;
+  padding: 0;
+}
+
+.parasolTable {
+  empty-cells: show;
+}

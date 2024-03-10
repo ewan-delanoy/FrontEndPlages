@@ -1,9 +1,9 @@
-<select class='select-option' #plageSelector
+<select class='select-plage' #plageSelector
         (change)='handlePlageSelection(plageSelector.value)'>
   <option selected disabled>Choisissez une plage</option>
   <option class='option'
           *ngFor='let plage of plages'
-          [value]="plage.nom">{{plage.nom}} (concessionnaire :
+          [value]="plage.nom">{{plage.nom}} (gerée par
             {{plage.concessionnaire.prenom}}
     {{plage.concessionnaire.nom}}
           )</option>
@@ -22,7 +22,6 @@
   <mat-datepicker #pickerDebut></mat-datepicker>
 </mat-form-field>
 
-<br>
 <mat-form-field>
   <mat-label>Date de fin</mat-label>
   <input matInput [min]="minDate" [matDatepicker]="pickerFin"

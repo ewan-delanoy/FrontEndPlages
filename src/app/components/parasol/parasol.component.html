@@ -1,1 +1,15 @@
-<p>parasol works!</p>
+
+
+
+<button
+  [class.whiteButton]="(!(parasol.isForMe)) && (!(parasol.isForSomeoneElse)) "
+  [class.redButton]="parasol.isForSomeoneElse "
+  [class.greenButton]="parasol.isForMe "
+  [disabled]="parasol.isForSomeoneElse"
+  (click)="transmitParasolToggle()"
+> <span *ngIf='parasol.isForSomeoneElse'> Pris </span>
+  <span *ngIf='(!(parasol.isForMe)) && (!(parasol.isForSomeoneElse))'> Libre </span>
+  <span *ngIf='parasol.isForMe'>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>
+</button>

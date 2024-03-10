@@ -1,1 +1,54 @@
-<p>parasol-chooser works!</p>
+Votre lien de parenté avec le concessionnaire
+<select class='select-lien-de-parente' #lienDeParenteSelector
+        (change)='handleLienDeParenteSelection(lienDeParenteSelector.value)'>
+
+  <option class='option'
+          *ngFor='let lienDeParente of chooser.tousLesLiensDeParente'
+          [value]="lienDeParente.nom">{{lienDeParente.nom}}
+         ({{lienDeParente.coefficient | reduction}})
+  </option>
+</select>
+
+<button *ngIf="chooser.affectations.length > 0"
+  (click)="afterSelectionIsFinished()"
+>Choix terminé</button>
+
+<div class="scroll-view">
+
+  <table>
+    <tr *ngFor="let affectation of chooser.affectations; index as a">
+      <td>File {{ affectation.file.numero }}({{ affectation.file.prixJournalier | frencheuro }})</td>
+      <td>Place {{ affectation.numEmplacement }}</td>
+      <td>
+        <select class='select-equipement' #equipementSelector
+                (change)='handleEquipementChange(
+               affectation.file.numero,
+               affectation.numEmplacement,
+               equipementSelector.value)'>
+
+          <option class='option'
+                  *ngFor='let equipement of chooser.tousLesEquipements'
+                  [selected]="equipement.nom === affectation.equipement.nom"
+                  [value]="equipement.nom">{{equipement.nom}}
+
+          </option>
+        </select>
+      </td>
+    </tr>
+  </table>
+
+  <table class="parasolTable">
+    <tr *ngFor="let emplacement of emplacements; index as e">
+      <td class="tdOnTheSea">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </td>
+        <td *ngFor="let file of files; index as f">
+          <app-parasol [parasol]="chooser.parasols[e + nbEmplacments * f]"
+           (parasolToggle)="handleParasolToggle($event)" > </app-parasol>
+        </td>
+      <td class="tdOnTheSand">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </td>
+    </tr>
+  </table>
+</div>

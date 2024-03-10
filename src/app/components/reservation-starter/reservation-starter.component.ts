@@ -26,9 +26,10 @@ export class ReservationStarterComponent {
 
 
   ngOnInit() {
-    if(this.storage.reservationInProgress) {
+    if(this.storage.reservationDraftComplete) {
       this.plages = this.storage.reservationStarter.toutesLesPlages
       this.starterIsComplete = true
+      this.parasolChooser = this.storage.parasolChooser
     } else {
       this.apiCaller.getPlages().subscribe(
         (plages: PlageOutput[]) => {

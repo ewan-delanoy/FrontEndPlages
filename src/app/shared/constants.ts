@@ -9,6 +9,7 @@ import {ConcessionnaireOutput} from "../model/output/concessionnaire-output";
 import {TripleReservationFrontEnd} from "../model/front-end/triple-reservation-front-end";
 import {ReservationListFrontEnd} from "../model/front-end/reservation-list-front-end";
 import {ID_UTILISATEUR_INEXISTANT} from "./numerical-constants";
+import {EquipementOutput} from "../model/output/equipement-output";
 
 
 
@@ -76,4 +77,8 @@ export const dummyReservationOutput:ReservationOutput = {
   statutNom : ""
 }
 
-
+export const dummyEquipementOutput:EquipementOutput = {
+  nom: '',
+  nbDeLits: 0,
+  nbDeFauteuils : 0
+}

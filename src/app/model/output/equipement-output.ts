@@ -1,5 +1,5 @@
 export interface EquipementOutput {
-  nom:String
+  nom:string
   nbDeLits: number
   nbDeFauteuils : number
 }
