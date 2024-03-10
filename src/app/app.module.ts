@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module'
@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
-import { StartReservationComponent } from './components/start-reservation/start-reservation.component';
+import { ReservationStarterComponent } from './components/reservation-starter/reservation-starter.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { StartReservationComponent } from './components/start-reservation/start-
     ReservationDetailComponent,
     FrencheuroPipe,
     EquipementPipe,
-    StartReservationComponent
+    ReservationStarterComponent
   ],
   imports: [
     BrowserModule,

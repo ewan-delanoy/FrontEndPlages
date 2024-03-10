@@ -8,8 +8,9 @@ import {ReservationOutput} from "./output/reservation-output";
 import {ConcessionnaireOutput} from "./output/concessionnaire-output";
 import {TripleReservationFrontEnd} from "./front-end/triple-reservation-front-end";
 import {ReservationListFrontEnd} from "./front-end/reservation-list-front-end";
+import {ID_UTILISATEUR_INEXISTANT} from "./numerical-constants";
 
-export const ID_UTILISATEUR_INEXISTANT: number =0;
+
 
 export const dummyUtilisateurOutput:UtilisateurOutput = {
   utilisateurId : ID_UTILISATEUR_INEXISTANT,
@@ -38,7 +39,7 @@ const dummyConcessionnaireOutput:ConcessionnaireOutput= {
   numeroDeTelephone: ""
 };
 
-const dummyPlageOutput:PlageOutput= {
+export const dummyPlageOutput:PlageOutput= {
   plageId: 0,
   nom: "",
   concessionnaire: dummyConcessionnaireOutput

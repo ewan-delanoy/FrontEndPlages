@@ -1,4 +1,3 @@
-import {PaysInput} from "./pays-input";
 
 export interface ReservationInput {
   clientId: number;
