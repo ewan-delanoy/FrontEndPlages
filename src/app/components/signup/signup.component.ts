@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AuthService } from '../../shared/auth.service';
 import { Router } from '@angular/router';
+import {ApiCallerService} from "../../service/api-caller.service";
+import {ClientRegistrationInput} from "../../model/input/client-registration-input";
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -11,7 +12,7 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   constructor(
     public fb: FormBuilder,
-    public authService: AuthService,
+    public apiCaller: ApiCallerService,
     public router: Router
   ) {
     this.signupForm = this.fb.group({
@@ -23,11 +24,22 @@ export class SignupComponent implements OnInit {
   }
   ngOnInit() {}
   registerUser() {
-    this.authService.signUp(this.signupForm.value).subscribe((res) => {
-      if (res.result) {
+    const formData = this.signupForm.value
+    const clientData: ClientRegistrationInput =
+    {
+      prenom : formData.prenom,
+      nom : formData.nom,
+      email : formData.email,
+      motDePasse : formData.motDePasse,
+      paysInput : { code:'GB', nom: 'Royaume-Uni'},
+      dateHeureInscription : new Date()
+    }
+
+    this.apiCaller.signUp(clientData).subscribe(() => {
+
         this.signupForm.reset();
         this.router.navigate(['log-in']);
-      }
+
     });
   }
 }

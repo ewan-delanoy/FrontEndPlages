@@ -6,6 +6,7 @@ import {LoginOutput} from "../model/output/login-output";
 import {TripleReservationOutput} from "../model/output/triple-reservation-output";
 import {PlageOutput} from "../model/output/plage-output";
 import {catchError} from "rxjs/operators";
+import {ClientRegistrationInput} from "../model/input/client-registration-input";
 
 
 
@@ -18,6 +19,7 @@ export class ApiCallerService {
   endpoint: string = 'http://localhost:8000';
   loginUrl:string = `${this.endpoint}/api/connexion` ;
   plagesUrl:string = `${this.endpoint}/api/plages` ;
+  clientInscriptionUrl:string = `${this.endpoint}/api/clients` ;
   constructor(private http: HttpClient) { }
 
   editReservationStatus(concessionnaireId: number,reservationId:number,statusName:string) {
@@ -71,4 +73,9 @@ export class ApiCallerService {
     return throwError( () => new Error(msg));
   }
 
+  signUp(newClientData:ClientRegistrationInput) {
+    return this.http
+      .post(this.clientInscriptionUrl,newClientData)
+      .pipe(catchError(this.handleError));
+  }
 }
