@@ -1,10 +1,11 @@
 import {ParasolFrontEnd} from "./parasol-front-end";
 import {ParasolOutput} from "../output/parasol-output";
-import {NOMBRE_DEMPLACEMENTS_PAR_FILE} from "../numerical-constants";
+import {NOMBRE_DEMPLACEMENTS_PAR_FILE} from "../../shared/numerical-constants";
 import {AffectationInput} from "../input/affectation-input";
 import {EquipementOutput} from "../output/equipement-output";
 import {LienDeParenteOutput} from "../output/lien-de-parente-output";
 import {PreparationReservationOutput} from "../output/preparation-reservation-output";
+import {dummyLienDeParenteOutput} from "../../shared/constants";
 
 export class ParasolChooserFrontEnd {
   private parasols: ParasolFrontEnd[]
@@ -16,18 +17,30 @@ export class ParasolChooserFrontEnd {
   affectations:AffectationInput[]
   lienDeParente: LienDeParenteOutput
 
-  constructor(preparation:PreparationReservationOutput) {
+  // utilisé pour construire une instance vide
+  constructor()
+
+  constructor(preparation:PreparationReservationOutput)
+  constructor(preparation?:PreparationReservationOutput) {
     this.parasols = []
     this.affectations = []
-    this.tousLesEquipements = preparation.equipements
-    this.tousLesLiensDeParente = preparation.liensDeParente
-    this.lienDeParente = preparation.liensDeParente[0]
-    const parasolsOutput:ParasolOutput[]=preparation.parasols
+    if(preparation) {
+      this.tousLesEquipements = preparation.equipements
+      this.tousLesLiensDeParente = preparation.liensDeParente
+      this.lienDeParente = preparation.liensDeParente[0]
+      const parasolsOutput:ParasolOutput[]=preparation.parasols
 
-    const n:number=parasolsOutput.length
-    for(let i=0; i<n; i++) {
-      this.parasols.push(new ParasolFrontEnd(parasolsOutput[i],this.tousLesEquipements))
+      const n:number=parasolsOutput.length
+      for(let i=0; i<n; i++) {
+        this.parasols.push(new ParasolFrontEnd(parasolsOutput[i],this.tousLesEquipements))
+      }
+    } else {
+        this.tousLesEquipements = []
+        this.tousLesLiensDeParente = []
+        this.lienDeParente = dummyLienDeParenteOutput
     }
+
+
   }
 
 

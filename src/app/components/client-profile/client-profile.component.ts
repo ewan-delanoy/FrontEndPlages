@@ -4,7 +4,7 @@ import {TripleReservationOutput} from "../../model/output/triple-reservation-out
 import {AuthService} from "../../shared/auth.service";
 import {ApiCallerService} from "../../service/api-caller.service";
 import {TripleReservationFrontEnd} from "../../model/front-end/triple-reservation-front-end";
-import {dummyTripleReservation} from "../../model/constants";
+import {dummyTripleReservation} from "../../shared/constants";
 
 @Component({
   selector: 'app-client-profile',

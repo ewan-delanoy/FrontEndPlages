@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {LoginInput} from "../model/input/login-input";
 import {ApiCallerService} from "../service/api-caller.service";
-import {dummyUtilisateurOutput} from "../model/constants";
-import {ID_UTILISATEUR_INEXISTANT} from "../model/numerical-constants";
+import {dummyUtilisateurOutput} from "./constants";
+import {ID_UTILISATEUR_INEXISTANT} from "./numerical-constants";
 
 
 @Injectable({

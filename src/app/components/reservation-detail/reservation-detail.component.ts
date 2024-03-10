@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {ReservationOutput} from "../../model/output/reservation-output";
-import {dummyReservationOutput, dummyTripleReservation} from "../../model/constants";
-import {AuthService} from "../../shared/auth.service";
+import {dummyReservationOutput} from "../../shared/constants";
 import {ApiCallerService} from "../../service/api-caller.service";
 import {StorageService} from "../../shared/storage.service";
 import {Router} from "@angular/router";
@@ -33,7 +32,7 @@ export class ReservationDetailComponent {
     console.log(this.reservation);
     const reservationId = this.reservation.reservationId;
     this.apiCaller.editReservationStatus(concessionnaireId,reservationId,statusName)
-      .subscribe((result: any) => {
+      .subscribe(() => {
         this.router.navigate(['manager-profile/']);
       });
 

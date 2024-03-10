@@ -3,9 +3,8 @@ import {UtilisateurOutput} from "../../model/output/utilisateur-output";
 import {TripleReservationOutput} from "../../model/output/triple-reservation-output";
 import {AuthService} from "../../shared/auth.service";
 import {ApiCallerService} from "../../service/api-caller.service";
-import {ReservationListFrontEnd} from "../../model/front-end/reservation-list-front-end";
 import {TripleReservationFrontEnd} from "../../model/front-end/triple-reservation-front-end";
-import {dummyTripleReservation} from "../../model/constants";
+import {dummyTripleReservation} from "../../shared/constants";
 
 @Component({
   selector: 'app-manager-profile',

@@ -16,10 +16,12 @@ import { ReservationDetailComponent } from './components/reservation-detail/rese
 import { FrencheuroPipe } from './pipes/frencheuro.pipe';
 import { EquipementPipe } from './pipes/equipement.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule} from "@angular/material/input";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import { MatInputModule} from "@angular/material/input";
+import { MatDatepickerModule} from "@angular/material/datepicker";
+import { MAT_DATE_LOCALE, MatNativeDateModule } from "@angular/material/core";
 import { ReservationStarterComponent } from './components/reservation-starter/reservation-starter.component';
+import { ParasolChooserComponent } from './components/parasol-chooser/parasol-chooser.component';
+import { ParasolComponent } from './components/parasol/parasol.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ReservationStarterComponent } from './components/reservation-starter/re
     ReservationDetailComponent,
     FrencheuroPipe,
     EquipementPipe,
-    ReservationStarterComponent
+    ReservationStarterComponent,
+    ParasolChooserComponent,
+    ParasolComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +51,7 @@ import { ReservationStarterComponent } from './components/reservation-starter/re
     MatInputModule,
     MatDatepickerModule
   ],
-  providers: [
-
-  ],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'fr-FR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

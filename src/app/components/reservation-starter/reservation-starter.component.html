@@ -1,1 +1,38 @@
-<p>reservation-starter works!</p>
+<select class='select-option' #plageSelector
+        (change)='handlePlageSelection(plageSelector.value)'>
+  <option selected disabled>Choisissez une plage</option>
+  <option class='option'
+          *ngFor='let plage of plages'
+          [value]="plage.nom">{{plage.nom}} (concessionnaire :
+            {{plage.concessionnaire.prenom}}
+    {{plage.concessionnaire.nom}}
+          )</option>
+</select>
+
+<br>
+
+<mat-form-field>
+  <mat-label>Date de début</mat-label>
+  <input matInput [min]="minDate" [matDatepicker]="pickerDebut"
+         [matDatepickerFilter]="dateDebutFilter"
+         (dateChange)="handleDateDebutChange($event)"
+  >
+  <mat-hint> </mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="pickerDebut"></mat-datepicker-toggle>
+  <mat-datepicker #pickerDebut></mat-datepicker>
+</mat-form-field>
+
+<br>
+<mat-form-field>
+  <mat-label>Date de fin</mat-label>
+  <input matInput [min]="minDate" [matDatepicker]="pickerFin"
+         [matDatepickerFilter]="dateFinFilter"
+         (dateChange)="handleDateFinChange($event)"
+  >
+  <mat-hint> </mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="pickerFin"></mat-datepicker-toggle>
+  <mat-datepicker #pickerFin></mat-datepicker>
+</mat-form-field>
+<br>
+<app-parasol-chooser *ngIf="starterIsComplete" [chooser]="parasolChooser"></app-parasol-chooser>
+

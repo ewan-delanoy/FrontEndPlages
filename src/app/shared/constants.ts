@@ -1,13 +1,13 @@
-import {UtilisateurOutput} from "./output/utilisateur-output";
-import {LoginOutput} from "./output/login-output";
-import {PlageOutput} from "./output/plage-output";
-import {ClientOutput} from "./output/client-output";
-import {LienDeParenteOutput} from "./output/lien-de-parente-output";
-import {PaysOutput} from "./output/pays-output";
-import {ReservationOutput} from "./output/reservation-output";
-import {ConcessionnaireOutput} from "./output/concessionnaire-output";
-import {TripleReservationFrontEnd} from "./front-end/triple-reservation-front-end";
-import {ReservationListFrontEnd} from "./front-end/reservation-list-front-end";
+import {UtilisateurOutput} from "../model/output/utilisateur-output";
+import {LoginOutput} from "../model/output/login-output";
+import {PlageOutput} from "../model/output/plage-output";
+import {ClientOutput} from "../model/output/client-output";
+import {LienDeParenteOutput} from "../model/output/lien-de-parente-output";
+import {PaysOutput} from "../model/output/pays-output";
+import {ReservationOutput} from "../model/output/reservation-output";
+import {ConcessionnaireOutput} from "../model/output/concessionnaire-output";
+import {TripleReservationFrontEnd} from "../model/front-end/triple-reservation-front-end";
+import {ReservationListFrontEnd} from "../model/front-end/reservation-list-front-end";
 import {ID_UTILISATEUR_INEXISTANT} from "./numerical-constants";
 
 
@@ -60,7 +60,7 @@ const dummyClientOutput:ClientOutput= {
   dateHeureInscription: new Date()
 }
 
-const dummyLienDeParenteOutput:LienDeParenteOutput = {
+export const dummyLienDeParenteOutput:LienDeParenteOutput = {
   nom: "",
   coefficient: 0
 };
@@ -75,3 +75,5 @@ export const dummyReservationOutput:ReservationOutput = {
   lienDeParente: dummyLienDeParenteOutput,
   statutNom : ""
 }
+
+
