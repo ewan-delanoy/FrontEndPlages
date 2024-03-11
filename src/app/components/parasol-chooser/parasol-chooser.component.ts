@@ -4,7 +4,7 @@ import {LienDeParenteOutput} from "../../model/output/lien-de-parente-output";
 import {NOMBRE_DE_FILES, NOMBRE_DEMPLACEMENTS_PAR_FILE} from "../../shared/numerical-constants";
 import {ParasolFrontEnd} from "../../model/front-end/parasol-front-end";
 import {StorageService} from "../../shared/storage.service";
-import {Router} from "@angular/router";
+
 
 
 @Component({
@@ -19,8 +19,7 @@ export class ParasolChooserComponent {
   emplacements: number [] = [].constructor(NOMBRE_DEMPLACEMENTS_PAR_FILE)
   nbEmplacments: number = NOMBRE_DEMPLACEMENTS_PAR_FILE
 
-  constructor(private storage: StorageService,
-              private router: Router) {
+  constructor(private storage: StorageService) {
   }
 
   handleLienDeParenteSelection(nomLienDeParente:string){
@@ -44,8 +43,6 @@ export class ParasolChooserComponent {
 
 
   afterSelectionIsFinished() {
-    this.storage.parasolChooser = this.chooser
-    this.storage.reservationDraftComplete = true
-    this.router.navigate(['confirm-reservation'])
+    this.storage.afterSelectionIsFinished(this.chooser)
   }
 }

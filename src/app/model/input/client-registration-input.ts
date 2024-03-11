@@ -1,9 +1,9 @@
 import {PaysInput} from './pays-input';
 export interface ClientRegistrationInput {
-  prenom: String
-  nom: String
-  email: String
-  motDePasse: String
+  prenom: string
+  nom: string
+  email: string
+  motDePasse: string
   paysInput: PaysInput
   dateHeureInscription: Date
 }

@@ -47,7 +47,7 @@ export class ReservationStarterComponent {
       this.plages.find( plage =>
       {return plage.nom === nomPlage})
     console.log("just found :",plage)
-    if (plage !== undefined) this.storage.reservationStarter.plage = plage
+    if (plage !== undefined) this.storage.reservationStarter.setPlage(plage)
     this.checkReservationStarterCompletion()
   }
 
@@ -55,7 +55,7 @@ export class ReservationStarterComponent {
     if (event.value === null) {
       return;
     } else {
-      this.storage.reservationStarter.dateDebut = event.value
+      this.storage.reservationStarter.setDateDebut(event.value)
       this.checkReservationStarterCompletion()
     }
   }
@@ -64,7 +64,7 @@ export class ReservationStarterComponent {
     if (event.value === null) {
       return;
     } else {
-      this.storage.reservationStarter.dateFin = event.value
+      this.storage.reservationStarter.setDateFin(event.value)
       this.checkReservationStarterCompletion()
     }
   }
@@ -95,32 +95,23 @@ export class ReservationStarterComponent {
     if(this.starterIsComplete) {
       return;
     }
-    if(this.storage.reservationStarter.plage === null) {
+    if(!(this.storage.reservationStarter.isComplete())) {
       return;
-    } else {
-      const plageNotNull:PlageOutput = this.storage.reservationStarter.plage
-      if(this.storage.reservationStarter.dateDebut === null) {
-        return;
-      } else {
-        const dateDebutNotNull:Date = this.storage.reservationStarter.dateDebut
-        if(this.storage.reservationStarter.dateFin === null) {
-          return;
-        } else {
-          const dateFinNotNull:Date = this.storage.reservationStarter.dateFin
-          const prepInput:PreparationReservationInput = {
-            plageId : plageNotNull.plageId,
-            dateDebut: dateDebutNotNull,
-            dateFin : dateFinNotNull
-          }
-          this.apiCaller.prepareForm(prepInput).subscribe(
+    }
+    const plage:PlageOutput = this.storage.reservationStarter.plage
+    const dateDebut:Date = this.storage.reservationStarter.dateDebut
+    const dateFin:Date = this.storage.reservationStarter.dateFin
+    const prepInput:PreparationReservationInput = {
+            plageId : plage.plageId,
+            dateDebut: dateDebut,
+            dateFin : dateFin
+    }
+    this.apiCaller.prepareForm(prepInput).subscribe(
             (prep: PreparationReservationOutput) => {
               this.parasolChooser = new ParasolChooserFrontEnd(prep)
               this.starterIsComplete = true
             }
           )
         }
-      }
-    }
-  }
 
 }

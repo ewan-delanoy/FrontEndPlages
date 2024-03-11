@@ -3,6 +3,7 @@ import {ReservationOutput} from "../model/output/reservation-output";
 import {dummyReservationOutput} from "./constants";
 import {ReservationStarterFrontEnd} from "../model/front-end/reservation-starter-front-end";
 import {ParasolChooserFrontEnd} from "../model/front-end/parasol-chooser-front-end";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class StorageService {
   reservationStarter: ReservationStarterFrontEnd = new ReservationStarterFrontEnd()
   parasolChooser: ParasolChooserFrontEnd = new ParasolChooserFrontEnd()
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   getViewedReservation():  ReservationOutput {
     return this.viewedReservation;
@@ -29,5 +30,13 @@ export class StorageService {
        (sum, affectation) => sum + affectation.prixJournalierFile, 0)
 
   }
+
+  afterSelectionIsFinished(finishedChooser:ParasolChooserFrontEnd) {
+    this.parasolChooser = finishedChooser
+    this.reservationDraftComplete = true
+    this.router.navigate(['confirm-reservation'])
+  }
+
+
 
 }

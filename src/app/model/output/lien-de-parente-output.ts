@@ -1,4 +1,4 @@
 export interface LienDeParenteOutput {
-  nom: String;
+  nom: string;
   coefficient: number;
 }

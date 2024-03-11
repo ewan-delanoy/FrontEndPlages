@@ -11,5 +11,5 @@ export interface ReservationOutput {
   dateDebut: Date;
   dateFin: Date;
   lienDeParente: LienDeParenteOutput;
-  statutNom: String;
+  statutNom: string;
 }

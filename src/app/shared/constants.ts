@@ -10,6 +10,7 @@ import {TripleReservationFrontEnd} from "../model/front-end/triple-reservation-f
 import {ReservationListFrontEnd} from "../model/front-end/reservation-list-front-end";
 import {ID_UTILISATEUR_INEXISTANT} from "./numerical-constants";
 import {EquipementOutput} from "../model/output/equipement-output";
+import {ReservationInput} from "../model/input/reservation-input";
 
 
 
@@ -81,4 +82,13 @@ export const dummyEquipementOutput:EquipementOutput = {
   nom: '',
   nbDeLits: 0,
   nbDeFauteuils : 0
+}
+
+export const dummyReservationInput:ReservationInput = {
+  clientId: 0,
+  plageId: 0,
+  affectations : [],
+  dateDebut: new Date(),
+  dateFin: new Date(),
+  lienDeParenteNom: ''
 }

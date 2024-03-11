@@ -1,4 +1,4 @@
 export interface PaysInput {
-  code: String;
-  nom: String;
+  code: string;
+  nom: string;
 }
