@@ -20,10 +20,10 @@ export class SigninComponent implements OnInit {
     });
   }
   ngOnInit() {
-    console.log("Entering SigninComponent.ngOnInit");
+
   }
   loginUser() {
-    console.log("Entering SigninComponent.loginUser");
+
     this.authService.signIn(this.signinForm.value);
   }
 }

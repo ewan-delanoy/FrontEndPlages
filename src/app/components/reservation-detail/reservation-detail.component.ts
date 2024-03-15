@@ -5,6 +5,7 @@ import {ApiCallerService} from "../../service/api-caller.service";
 import {StorageService} from "../../shared/storage.service";
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-reservation-detail',
   templateUrl: './reservation-detail.component.html',
@@ -15,6 +16,8 @@ export class ReservationDetailComponent {
   reservation: ReservationOutput = dummyReservationOutput
   treatmentAllowedOnReservation: boolean = false
   totalPrice: number = 0
+  clientConnecte: boolean = false
+
 
   constructor(
     public storageService: StorageService,
@@ -24,6 +27,7 @@ export class ReservationDetailComponent {
     this.reservation = this.storageService.getViewedReservation()
     this.treatmentAllowedOnReservation = this.storageService.treatmentAllowedOnReservation
     this.totalPrice = this.storageService.totalPrice
+    this.clientConnecte = this.storageService.clientConnecte()
   }
   treatReservation(accepted:boolean) {
     const statusName = accepted? 'Acceptee': 'Refusee';

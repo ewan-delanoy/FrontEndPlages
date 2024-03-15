@@ -11,6 +11,8 @@ import {ReservationListFrontEnd} from "../model/front-end/reservation-list-front
 import {ID_UTILISATEUR_INEXISTANT} from "./numerical-constants";
 import {EquipementOutput} from "../model/output/equipement-output";
 import {ReservationInput} from "../model/input/reservation-input";
+import {PaysInput} from "../model/input/pays-input";
+import {PartialReservationInput} from "../model/input/partial-reservation-input";
 
 
 
@@ -19,7 +21,7 @@ export const dummyUtilisateurOutput:UtilisateurOutput = {
   prenom : "",
   nom : "",
   email: "",
-  typeUtilisateur: ""
+  estUnClient: false
 };
 
 export const dummyLoginOutput:LoginOutput = {
@@ -45,12 +47,12 @@ export const dummyPlageOutput:PlageOutput= {
   plageId: 0,
   nom: "",
   concessionnaire: dummyConcessionnaireOutput
-};
+}
 
 const dummyPaysOutput:PaysOutput= {
   code :"",
   nom :""
-};
+}
 
 
 const dummyClientOutput:ClientOutput= {
@@ -64,8 +66,9 @@ const dummyClientOutput:ClientOutput= {
 
 export const dummyLienDeParenteOutput:LienDeParenteOutput = {
   nom: "",
-  coefficient: 0
-};
+  coefficient: 0,
+  noDiscount: true
+}
 
 export const dummyReservationOutput:ReservationOutput = {
   plage: dummyPlageOutput,
@@ -75,7 +78,10 @@ export const dummyReservationOutput:ReservationOutput = {
   dateDebut: new Date(),
   dateFin: new Date(),
   lienDeParente: dummyLienDeParenteOutput,
-  statutNom : ""
+  statutNom : "",
+  numeroCarte: '',
+  anneeExpiration: 0,
+  moisExpiration: 0,
 }
 
 export const dummyEquipementOutput:EquipementOutput = {
@@ -90,5 +96,22 @@ export const dummyReservationInput:ReservationInput = {
   affectations : [],
   dateDebut: new Date(),
   dateFin: new Date(),
+  lienDeParenteNom: '',
+  numeroCarte: '',
+  anneeExpiration: 0,
+  moisExpiration: 0,
+  cryptogramme: ''
+}
+
+export const dummyPartialReservationInput:PartialReservationInput = {
+  clientId: 0,
+  plageId: 0,
+  affectations : [],
+  dateDebut: new Date(),
+  dateFin: new Date(),
   lienDeParenteNom: ''
+}
+export const dummyPaysInput:PaysInput= {
+  code :"",
+  nom :""
 }

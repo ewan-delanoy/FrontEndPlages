@@ -1,3 +1,7 @@
+<button *ngIf="chooser.affectations.length > 0"
+        (click)="afterSelectionIsFinished()"
+>Choix terminé</button>
+<br>
 Votre lien de parenté avec le concessionnaire
 <select class='select-lien-de-parente' #lienDeParenteSelector
         (change)='handleLienDeParenteSelection(lienDeParenteSelector.value)'>
@@ -9,9 +13,7 @@ Votre lien de parenté avec le concessionnaire
   </option>
 </select>
 
-<button *ngIf="chooser.affectations.length > 0"
-  (click)="afterSelectionIsFinished()"
->Choix terminé</button>
+
 
 <div class="scroll-view">
 
@@ -43,7 +45,7 @@ Votre lien de parenté avec le concessionnaire
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </td>
         <td *ngFor="let file of files; index as f">
-          <app-parasol [parasol]="chooser.parasols[e + nbEmplacments * f]"
+          <app-parasol [parasol]="chooser.parasols[e + emplacements.length * f]"
            (parasolToggle)="handleParasolToggle($event)" > </app-parasol>
         </td>
       <td class="tdOnTheSand">

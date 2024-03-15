@@ -17,4 +17,8 @@ export class ReservationStarterFrontEnd {
   setDateDebut(newDate:Date) { this.dateDebut=newDate;this.dateDebutChoisie=true; }
   setDateFin(newDate:Date) { this.dateFin=newDate;this.dateFinChoisie=true; }
    constructor() {}
+
+  dateDebutEstChoisie(): boolean { return this.dateDebutChoisie }
+  dateFinEstChoisie(): boolean { return this.dateDebutChoisie }
+
 }

@@ -8,5 +8,5 @@ export interface UtilisateurOutput {
   pays?: PaysOutput;
   dateHeureInscription?: Date;
   numeroDeTelephone?: string;
-  typeUtilisateur: string;
+  estUnClient: boolean;
 }

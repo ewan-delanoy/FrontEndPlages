@@ -1,8 +1,9 @@
 <select class='select-plage' #plageSelector
         (change)='handlePlageSelection(plageSelector.value)'>
-  <option selected disabled>Choisissez une plage</option>
+  <option [selected]="!(starterIsComplete)" disabled>Choisissez une plage</option>
   <option class='option'
           *ngFor='let plage of plages'
+          [selected]="starterIsComplete && (plage.nom == plageRetour.nom)"
           [value]="plage.nom">{{plage.nom}} (gerée par
             {{plage.concessionnaire.prenom}}
     {{plage.concessionnaire.nom}}
@@ -15,6 +16,7 @@
   <mat-label>Date de début</mat-label>
   <input matInput [min]="minDate" [matDatepicker]="pickerDebut"
          [matDatepickerFilter]="dateDebutFilter"
+         [value]="dateDebutRetour"
          (dateChange)="handleDateDebutChange($event)"
   >
   <mat-hint> </mat-hint>
@@ -26,6 +28,7 @@
   <mat-label>Date de fin</mat-label>
   <input matInput [min]="minDate" [matDatepicker]="pickerFin"
          [matDatepickerFilter]="dateFinFilter"
+         [value]="dateFinRetour"
          (dateChange)="handleDateFinChange($event)"
   >
   <mat-hint> </mat-hint>

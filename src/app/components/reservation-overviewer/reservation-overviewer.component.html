@@ -1,1 +1,51 @@
-<p>reservation-overviewer works!</p>
+
+<button
+  (click)="cancelReservation()"
+  type="button"
+  class="btn btn-danger"
+>
+  Annuler
+</button>
+
+<button
+  (click)="goBack()"
+  type="button"
+  class="btn btn-secondary"
+>
+  Retour
+</button>
+
+<button
+  (click)="proceedToPayment()"
+  type="button"
+  class="btn btn-success"
+>
+  Payer
+</button>
+<br>
+
+Vous êtes sur le point de confirmer la réservation suivante :
+
+<br> Plage {{ nomPlage }},
+gerée par {{ prenomConcessionnaire }} {{ nomConcessionnaire | uppercase }}, du
+{{ dateDebut | frenchDate }} au {{ dateFin | frenchDate }}.<br>
+
+Parasols : <br>
+
+<ul class="no-marker" *ngFor="let affectation of finishedChooser.affectations">
+  <li> File {{affectation.file.numero}},
+    Prix {{affectation.file.prixJournalier | frencheuro }},
+    place {{affectation.numEmplacement}},
+    {{ affectation.equipement.nom }}
+  </li>
+</ul>
+
+Prix total <span *ngIf="lienDeParente.noDiscount">avant remise</span> :
+{{totalPrice | frencheuro }}<br>
+<div *ngIf="!lienDeParente.noDiscount">
+  Réduction familiale : {{ lienDeParente.coefficient }} <br>
+  Total final : {{totalPrice | frencheuro}} x {{ lienDeParente.coefficient }} =
+  {{ totalPrice * lienDeParente.coefficient | frencheuro }}
+</div>
+
+

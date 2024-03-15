@@ -8,17 +8,18 @@ import {ManagerProfileComponent} from "./components/manager-profile/manager-prof
 import {ReservationDetailComponent} from "./components/reservation-detail/reservation-detail.component";
 import {ReservationStarterComponent} from "./components/reservation-starter/reservation-starter.component";
 import {ReservationOverviewerComponent} from "./components/reservation-overviewer/reservation-overviewer.component";
+import {AuthGuard} from "./shared/auth.guard";
 
 const routes: Routes = [
   // { path: '', redirectTo: '/log-in', pathMatch: 'full' },
   { path: 'log-in', component: SigninComponent },
   { path: 'sign-up', component: SignupComponent },
-  { path: 'start-reservation', component: ReservationStarterComponent },
-  { path: 'confirm-reservation', component: ReservationOverviewerComponent },
-  { path: 'client-profile', component: ClientProfileComponent /* , canActivate: [AuthGuard] */ },
-  { path: 'manager-profile', component: ManagerProfileComponent /* , canActivate: [AuthGuard] */ },
-  { path: 'reservation-detail', component: ReservationDetailComponent /* , canActivate: [AuthGuard] */ }
-];
+  { path: 'start-reservation', component: ReservationStarterComponent /*, canActivate: [AuthGuard] */ },
+  { path: 'review-reservation', component: ReservationOverviewerComponent /*, canActivate: [AuthGuard] */ },
+  { path: 'client-profile', component: ClientProfileComponent  /*, canActivate: [AuthGuard] */ },
+  { path: 'manager-profile', component: ManagerProfileComponent /*, canActivate: [AuthGuard] */ },
+  { path: 'reservation-detail', component: ReservationDetailComponent /*, canActivate: [AuthGuard] */  }
+]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

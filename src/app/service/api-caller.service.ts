@@ -9,6 +9,8 @@ import {catchError} from "rxjs/operators";
 import {ClientRegistrationInput} from "../model/input/client-registration-input";
 import {PreparationReservationInput} from "../model/input/preparation-reservation-input";
 import {PreparationReservationOutput} from "../model/output/preparation-reservation-output";
+import {ReservationInput} from "../model/input/reservation-input";
+import {PaysOutput} from "../model/output/pays-output";
 
 
 
@@ -21,8 +23,10 @@ export class ApiCallerService {
   endpoint: string = 'http://localhost:8000';
   loginUrl:string = `${this.endpoint}/api/connexion` ;
   plagesUrl:string = `${this.endpoint}/api/plages` ;
+  paysUrl:string = `${this.endpoint}/api/pays` ;
   clientInscriptionUrl:string = `${this.endpoint}/api/clients` ;
   preparationUrl:string = `${this.endpoint}/api/clients/form-data` ;
+  reservationUrl:string = `${this.endpoint}/clients/reservation` ;
   constructor(private http: HttpClient) { }
 
   editReservationStatus(concessionnaireId: number,reservationId:number,statusName:string) {
@@ -33,6 +37,11 @@ export class ApiCallerService {
   }
 
 
+  getPays():Observable<PaysOutput[]> {
+    return this.http
+      .get<PaysOutput[]>(this.paysUrl)
+      .pipe(catchError(this.handleError));
+  }
 
   getPlages():Observable<PlageOutput[]> {
     return this.http
@@ -77,6 +86,11 @@ export class ApiCallerService {
       .pipe(catchError(this.handleError));
   }
 
+  sendReservation(reservationInput:ReservationInput): Observable<number> {
+    return this.http
+      .post<number>(this.reservationUrl, reservationInput)
+      .pipe(catchError(this.handleError));
+  }
 
   signUp(newClientData:ClientRegistrationInput) {
     return this.http

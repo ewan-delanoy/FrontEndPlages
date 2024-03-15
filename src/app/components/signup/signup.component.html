@@ -1,51 +1,61 @@
-<div class="form-signin w-100 m-auto">
-  <form
-    [formGroup]="signupForm"
-    (ngSubmit)="registerUser()"
-  >
-    <h3 class="h3 mb-3 font-weight-normal text-center">Inscrivez vous</h3>
-    <div class="mb-3">
-      <label>Name</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="nom"
-        placeholder="Votre nom"
-        required
-      />
-    </div>
-    <div class="mb-3">
-      <label>Prénom</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="prenom"
-        placeholder="Votre prénom"
-        required
-      />
-    </div>
-    <div class="mb-3">
-      <label>Adresse mail</label>
-      <input
-        type="email"
-        class="form-control"
-        formControlName="email"
-        placeholder="Votre email"
-        required
-      />
-    </div>
-    <div class="mb-3">
-      <label>Mot de passe</label>
-      <input
-        type="password"
-        class="form-control"
-        formControlName="motDePasse"
-        placeholder="motDePasse"
-        required
-      />
-    </div>
-    <div class="d-grid">
-      <button type="submit" class="btn btn-block btn-primary">Envoyer</button>
-    </div>
-  </form>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-6">
+<form [formGroup]="signupForm" (ngSubmit)="registerUser()">
+    <span>Vos coordonnées</span><br>
+  <label for="nom">Nom</label>
+  <div class="mb-2">
+    <input formControlName="nom" type="text" id="nom"
+           placeholder="Nom" class="formControl" required />
+  </div>
+
+  <span *ngIf="elementIncorrect('nom')" class="text-danger">
+    Le nom est obligatoire
+  </span><br>
+  <label for="prenom">Prénom</label>
+  <div class="mb-2">
+    <input formControlName="prenom" type="text" id="prenom" class="formControl" required />
+  </div>
+
+  <span *ngIf="elementIncorrect('prenom')" class="text-danger">
+    Le prénom est obligatoire
+  </span><br>
+
+  <label for="email" class="form-label">Email</label>
+  <div class="mb-2">
+    <input formControlName="email" type="email" id="email" class="formControl" required />
+  </div>
+
+  <span *ngIf="elementIncorrect('email')" class="text-danger">
+    L'email est obligatoire
+  </span><br>
+
+  <label for="motDePasse">Mot de passe</label>
+  <div class="mb-2">
+    <input formControlName="motDePasse" type="password" id="motDePasse" class="formControl" maxlength="58" required />
+  </div>
+
+  <span *ngIf="elementIncorrect('motDePasse')" class="text-danger">
+    Le mot de passe est obligatoire
+  </span><br>
+
+  <label for="pays">Pays</label>
+  <div class="mb-2">
+    <select formControlName="pays" id="pays">
+      <option value="" disabled>Choisissez un pays</option>
+      <option *ngFor="let country of countries" [value]="country.code">
+        {{ country.nom }} ({{ country.code }})</option>
+    </select>
+  </div>
+
+  <span *ngIf="elementIncorrect('pays')" class="text-danger">
+    Le pays est obligatoire
+  </span>
+
+  <div class="mb-2">
+  <button [disabled]="!signupForm.valid" type="submit">Envoyer</button>
+  </div>
+</form>
+</div>
+  </div>
 </div>

@@ -16,23 +16,38 @@ Réservation numéro {{ reservation.reservationId }} <br>
 
 Plage {{ reservation.plage.nom }} <br>
 
-Date début : {{ reservation.dateDebut }} <br>
+<span *ngIf="clientConnecte"> Gestionnaire :
+  {{ reservation.plage.concessionnaire.prenom}}
+  {{ reservation.plage.concessionnaire.nom | uppercase}}
+  {{ reservation.plage.concessionnaire.email}}
+  {{ reservation.plage.concessionnaire.numeroDeTelephone}}
+</span>
+<span *ngIf="!clientConnecte"> Client :
+  {{ reservation.client.prenom}}
+  {{ reservation.client.nom | uppercase}}
+  {{ reservation.client.email}}
+</span>
+<br>
 
-Date fin : {{ reservation.dateFin }} <br>
+
+Date début : {{ reservation.dateDebut | frenchDate }} <br>
+
+Date fin : {{ reservation.dateFin | frenchDate }} <br>
 
 Parasols : <br>
 
-<li *ngFor="let affectation of reservation.affectations">
-   <ul> File {{affectation.numeroFile}},
-        Prix {{affectation.prixJournalierFile | frencheuro }},
-        emplacement {{affectation.numEmplacement}},
-        {{ 10*affectation.nbDeLits  + affectation.nbDeFauteuils | equipement }}
-        </ul>
-</li>
+<ul class="no-marker" *ngFor="let affectation of reservation.affectations">
+   <li > File {{affectation.file.numero}},
+        {{affectation.file.prixJournalier | frencheuro }},
+        place {{affectation.numEmplacement}},
+        {{ affectation.equipement.nom }}
+        </li>
+</ul>
+<br>
 
-Prix total <span *ngIf="reservation.lienDeParente.nom !== 'Aucun lien'">avant remise</span> :
+Prix total <span *ngIf="reservation.lienDeParente.noDiscount">avant remise</span> :
 {{totalPrice | frencheuro }}<br>
-<div *ngIf="reservation.lienDeParente.nom !== 'Aucun lien'">
+<div *ngIf="reservation.lienDeParente.noDiscount">
   Réduction familiale : {{ reservation.lienDeParente.coefficient }} <br>
   Total final : {{totalPrice | frencheuro}} x {{ reservation.lienDeParente.coefficient }} =
   {{totalPrice*reservation.lienDeParente.coefficient | frencheuro }}

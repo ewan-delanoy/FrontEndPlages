@@ -14,7 +14,6 @@ import { ClientProfileComponent } from './components/client-profile/client-profi
 import { ManagerProfileComponent } from './components/manager-profile/manager-profile.component';
 import { ReservationDetailComponent } from './components/reservation-detail/reservation-detail.component';
 import { FrencheuroPipe } from './pipes/frencheuro.pipe';
-import { EquipementPipe } from './pipes/equipement.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule} from "@angular/material/input";
 import { MatDatepickerModule} from "@angular/material/datepicker";
@@ -24,6 +23,7 @@ import { ParasolChooserComponent } from './components/parasol-chooser/parasol-ch
 import { ParasolComponent } from './components/parasol/parasol.component';
 import { ReductionPipe } from './pipes/reduction.pipe';
 import { ReservationOverviewerComponent } from './components/reservation-overviewer/reservation-overviewer.component';
+import { FrenchDatePipe } from './pipes/french-date.pipe';
 
 @NgModule({
   declarations: [
@@ -36,12 +36,12 @@ import { ReservationOverviewerComponent } from './components/reservation-overvie
     ManagerProfileComponent,
     ReservationDetailComponent,
     FrencheuroPipe,
-    EquipementPipe,
     ReservationStarterComponent,
     ParasolChooserComponent,
     ParasolComponent,
     ReductionPipe,
-    ReservationOverviewerComponent
+    ReservationOverviewerComponent,
+    FrenchDatePipe
   ],
   imports: [
     BrowserModule,

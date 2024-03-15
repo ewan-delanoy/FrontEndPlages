@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ReservationOutput} from "../model/output/reservation-output";
-import {dummyReservationOutput} from "./constants";
+import {dummyReservationOutput, dummyUtilisateurOutput} from "./constants";
 import {ReservationStarterFrontEnd} from "../model/front-end/reservation-starter-front-end";
 import {ParasolChooserFrontEnd} from "../model/front-end/parasol-chooser-front-end";
 import {Router} from "@angular/router";
@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 })
 export class StorageService {
 
+  currentUser = dummyUtilisateurOutput;
 
   treatmentAllowedOnReservation: boolean = false
   private viewedReservation: ReservationOutput = dummyReservationOutput
@@ -27,7 +28,7 @@ export class StorageService {
     this.viewedReservation = newReservation
     this.totalPrice =
     newReservation.affectations.reduce(
-       (sum, affectation) => sum + affectation.prixJournalierFile, 0)
+       (sum, affectation) => sum + affectation.file.prixJournalier, 0)
 
   }
 
@@ -37,6 +38,8 @@ export class StorageService {
     this.router.navigate(['confirm-reservation'])
   }
 
-
+  clientConnecte():boolean {
+    return this.currentUser.estUnClient
+  }
 
 }

@@ -5,6 +5,7 @@ import {AuthService} from "../../shared/auth.service";
 import {ApiCallerService} from "../../service/api-caller.service";
 import {TripleReservationFrontEnd} from "../../model/front-end/triple-reservation-front-end";
 import {dummyTripleReservation} from "../../shared/constants";
+import {StorageService} from "../../shared/storage.service";
 
 @Component({
   selector: 'app-manager-profile',
@@ -15,10 +16,10 @@ export class ManagerProfileComponent {
   currentUser: UtilisateurOutput;
   reservations: TripleReservationFrontEnd
   constructor(
-    public authService: AuthService,
+    public storage: StorageService,
     private apiCaller: ApiCallerService
   ) {
-    this.currentUser = this.authService.currentUser;
+    this.currentUser = this.storage.currentUser;
     this.reservations = dummyTripleReservation
   }
   ngOnInit() {

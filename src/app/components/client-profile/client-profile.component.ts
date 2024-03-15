@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import {UtilisateurOutput} from "../../model/output/utilisateur-output";
 import {TripleReservationOutput} from "../../model/output/triple-reservation-output";
-import {AuthService} from "../../shared/auth.service";
 import {ApiCallerService} from "../../service/api-caller.service";
 import {TripleReservationFrontEnd} from "../../model/front-end/triple-reservation-front-end";
 import {dummyTripleReservation} from "../../shared/constants";
+import {StorageService} from "../../shared/storage.service";
 
 @Component({
   selector: 'app-client-profile',
@@ -15,14 +15,14 @@ export class ClientProfileComponent {
   currentUser: UtilisateurOutput
   reservations: TripleReservationFrontEnd
   constructor(
-    public authService: AuthService,
+    public storage: StorageService,
     private apiCaller: ApiCallerService
   ) {
-    this.currentUser = this.authService.currentUser;
+    this.currentUser = this.storage.currentUser;
     this.reservations = dummyTripleReservation
   }
   ngOnInit() {
-    this.apiCaller.getReservationsForClient(this.authService.currentUser.utilisateurId).subscribe(
+    this.apiCaller.getReservationsForClient(this.storage.currentUser.utilisateurId).subscribe(
       (tripleReservations:TripleReservationOutput) => {
         this.reservations=
           new TripleReservationFrontEnd(false,tripleReservations);

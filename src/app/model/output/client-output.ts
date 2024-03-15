@@ -2,9 +2,9 @@ import {PaysOutput} from './pays-output';
 
 export interface ClientOutput {
   utilisateurId: number;
-  prenom: String;
-  nom: String;
-  email: String;
+  prenom: string;
+  nom: string;
+  email: string;
   pays: PaysOutput;
   dateHeureInscription: Date;
 }

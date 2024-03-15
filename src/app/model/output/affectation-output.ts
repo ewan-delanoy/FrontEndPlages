@@ -1,7 +1,8 @@
+import {EquipementOutput} from "./equipement-output";
+import {FileOutput} from "./file-output";
+
 export interface AffectationOutput {
-  numeroFile: number;
-  prixJournalierFile: number;
-  numEmplacement: number;
-  nbDeLits: number;
-  nbDeFauteuils: number;
+  file:FileOutput
+  numEmplacement: number
+  equipement: EquipementOutput
 }

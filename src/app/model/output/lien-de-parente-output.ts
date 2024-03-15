@@ -1,4 +1,5 @@
 export interface LienDeParenteOutput {
-  nom: string;
-  coefficient: number;
+  nom: string
+  coefficient: number
+  noDiscount: boolean
 }
