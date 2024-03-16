@@ -1,28 +1,22 @@
-<button
+<div class="centering-container">
+
+<button *ngIf="isEditable"
   (click)="treatReservation(false)"
-  *ngIf="treatmentAllowedOnReservation"
   type="button"
   class="btn btn-success"
 >Accepter</button>
 
-<button
+<button *ngIf="isEditable"
   (click)="treatReservation(true)"
-  *ngIf="treatmentAllowedOnReservation"
   type="button"
   class="btn btn-danger"
 >Refuser</button>
 <br>
-Réservation numéro {{ reservation.reservationId }} <br>
+Réservation numéro {{ reservation.reservationId }} <span *ngIf="isEditable">, à traiter </span> <br>
 
 Plage {{ reservation.plage.nom }} <br>
 
-<span *ngIf="clientConnecte"> Gestionnaire :
-  {{ reservation.plage.concessionnaire.prenom}}
-  {{ reservation.plage.concessionnaire.nom | uppercase}}
-  {{ reservation.plage.concessionnaire.email}}
-  {{ reservation.plage.concessionnaire.numeroDeTelephone}}
-</span>
-<span *ngIf="!clientConnecte"> Client :
+<span> Client :
   {{ reservation.client.prenom}}
   {{ reservation.client.nom | uppercase}}
   {{ reservation.client.email}}
@@ -37,11 +31,11 @@ Date fin : {{ reservation.dateFin | frenchDate }} <br>
 Parasols : <br>
 
 <ul class="no-marker" *ngFor="let affectation of reservation.affectations">
-   <li > File {{affectation.file.numero}},
-        {{affectation.file.prixJournalier | frencheuro }},
-        place {{affectation.numEmplacement}},
-        {{ affectation.equipement.nom }}
-        </li>
+  <li > File {{affectation.file.numero}},
+    {{affectation.file.prixJournalier | frencheuro }},
+    place {{affectation.numEmplacement}},
+    {{ affectation.equipement.nom }}
+  </li>
 </ul>
 <br>
 
@@ -51,4 +45,8 @@ Prix total <span *ngIf="reservation.lienDeParente.noDiscount">avant remise</span
   Réduction familiale : {{ reservation.lienDeParente.coefficient }} <br>
   Total final : {{totalPrice | frencheuro}} x {{ reservation.lienDeParente.coefficient }} =
   {{totalPrice*reservation.lienDeParente.coefficient | frencheuro }}
+</div>
+
+Payée avec la carte bleue numéro {{ reservation.numeroCarte }}, expirant le
+{{ reservation.moisExpiration | number:'2.0' }}/{{ reservation.anneeExpiration }}
 </div>

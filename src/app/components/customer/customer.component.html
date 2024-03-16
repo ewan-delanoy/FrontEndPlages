@@ -1,0 +1,12 @@
+<nav class="navbar">
+  <span class="logo">{{ storage.currentUser.prenom }} {{ storage.currentUser.nom | uppercase }}
+    (Client) </span>
+  <button
+    (click)="logout()"
+    *ngIf="this.authService.isLoggedIn"
+    type="button"
+    class="btn btn-danger"
+  >Déconnexion </button>
+</nav>
+
+<router-outlet></router-outlet>

@@ -26,9 +26,9 @@ export class AuthService {
       .subscribe((loginOutput: any) => {
         this.storage.currentUser = loginOutput.utilisateurConnecte;
         if( this.storage.currentUser.estUnClient ) {
-          this.router.navigate(['client-profile/'])
+          this.router.navigate(['customer/profile/list'])
         } else {
-            this.router.navigate(['manager-profile/'])
+            this.router.navigate(['manager/profile/list'])
           }
         }
       )
@@ -42,7 +42,7 @@ export class AuthService {
 
   doLogout() {
     this.storage.currentUser = dummyUtilisateurOutput;
-    this.router.navigate(['log-in']);
+    this.router.navigate(['home']);
   }
 
 

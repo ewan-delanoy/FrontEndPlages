@@ -1,0 +1,13 @@
+.no-marker {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.centering-container {
+  max-width: 400px; /* Adjust max-width as needed */
+  margin: 0 auto; /* Centers the container horizontally */
+  padding: 20px; /* Adjust padding as needed */
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+  border: 2px solid #333;
+}

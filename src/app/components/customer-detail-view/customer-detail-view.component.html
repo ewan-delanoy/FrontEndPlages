@@ -1,0 +1,41 @@
+<div class="centering-container">
+
+Réservation numéro {{ reservation.reservationId }} <br>
+
+Plage {{ reservation.plage.nom }} <br>
+
+<span> Gestionnaire :
+  {{ reservation.plage.concessionnaire.prenom}}
+  {{ reservation.plage.concessionnaire.nom | uppercase}}
+  {{ reservation.plage.concessionnaire.email}}
+  {{ reservation.plage.concessionnaire.numeroDeTelephone}}
+</span>
+<br>
+
+
+Date début : {{ reservation.dateDebut | frenchDate }} <br>
+
+Date fin : {{ reservation.dateFin | frenchDate }} <br>
+
+Parasols : <br>
+
+<ul class="no-marker" *ngFor="let affectation of reservation.affectations">
+  <li > File {{affectation.file.numero}},
+    {{affectation.file.prixJournalier | frencheuro }},
+    place {{affectation.numEmplacement}},
+    {{ affectation.equipement.nom }}
+  </li>
+</ul>
+<br>
+
+Prix total <span *ngIf="reservation.lienDeParente.noDiscount">avant remise</span> :
+{{totalPrice | frencheuro }}<br>
+<div *ngIf="reservation.lienDeParente.noDiscount">
+  Réduction familiale : {{ reservation.lienDeParente.coefficient }} <br>
+  Total final : {{totalPrice | frencheuro}} x {{ reservation.lienDeParente.coefficient }} =
+  {{totalPrice*reservation.lienDeParente.coefficient | frencheuro }}
+</div>
+
+Payée avec la carte bleue numéro {{ reservation.numeroCarte }}, expirant le
+{{ reservation.moisExpiration | number:'2.0' }}/{{ reservation.anneeExpiration }}
+</div>

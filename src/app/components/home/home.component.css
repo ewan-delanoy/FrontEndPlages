@@ -1,0 +1,39 @@
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.container h1 {
+  font-size: 3em;
+  margin-top: 10vh; /* Adjust as needed */
+  display: grid;
+  place-items: center;
+}
+
+.buttons {
+  display: grid;
+  place-items: center;
+  margin-top: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.image{
+  height:40em; background-size:cover; width:auto;
+  background-image:url('/assets/beach_image.PNG');
+  background-position:50% 50%;
+}

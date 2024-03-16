@@ -18,9 +18,9 @@ export class ReservationBlockComponent {
 
   }
   seeReservationDetail(allowTreatment:boolean,reservation:ReservationOutput) {
-    console.log("Entering seeReservationDetail")
     this.storageService.treatmentAllowedOnReservation = allowTreatment
     this.storageService.setViewedReservation(reservation)
-    this.router.navigate(['reservation-detail/'])
+    const debutDeRoute:string = (this.storageService.clientConnecte()) ? 'customer' : 'manager'
+    this.router.navigate([debutDeRoute + '/profile/detail'])
   }
 }

@@ -10,9 +10,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { TripleReservationComponent } from './components/triple-reservation/triple-reservation.component';
 import { ReservationBlockComponent } from './components/reservation-block/reservation-block.component';
-import { ClientProfileComponent } from './components/client-profile/client-profile.component';
 import { ManagerProfileComponent } from './components/manager-profile/manager-profile.component';
-import { ReservationDetailComponent } from './components/reservation-detail/reservation-detail.component';
 import { FrencheuroPipe } from './pipes/frencheuro.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule} from "@angular/material/input";
@@ -24,6 +22,15 @@ import { ParasolComponent } from './components/parasol/parasol.component';
 import { ReductionPipe } from './pipes/reduction.pipe';
 import { ReservationOverviewerComponent } from './components/reservation-overviewer/reservation-overviewer.component';
 import { FrenchDatePipe } from './pipes/french-date.pipe';
+import { HomeComponent } from './components/home/home.component';
+import { CustomerComponent } from './components/customer/customer.component';
+import { ManagerComponent } from './components/manager/manager.component';
+import { ReservationPayerComponent } from './components/reservation-payer/reservation-payer.component';
+import { CustomerProfileComponent } from './components/customer-profile/customer-profile.component';
+import { CustomerListViewComponent } from './components/customer-list-view/customer-list-view.component';
+import { CustomerDetailViewComponent } from './components/customer-detail-view/customer-detail-view.component';
+import { ManagerListViewComponent } from './components/manager-list-view/manager-list-view.component';
+import { ManagerDetailViewComponent } from './components/manager-detail-view/manager-detail-view.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +39,6 @@ import { FrenchDatePipe } from './pipes/french-date.pipe';
     SignupComponent,
     TripleReservationComponent,
     ReservationBlockComponent,
-    ClientProfileComponent,
     ManagerProfileComponent,
     ReservationDetailComponent,
     FrencheuroPipe,
@@ -41,7 +47,16 @@ import { FrenchDatePipe } from './pipes/french-date.pipe';
     ParasolComponent,
     ReductionPipe,
     ReservationOverviewerComponent,
-    FrenchDatePipe
+    FrenchDatePipe,
+    HomeComponent,
+    CustomerComponent,
+    ManagerComponent,
+    ReservationPayerComponent,
+    CustomerProfileComponent,
+    CustomerListViewComponent,
+    CustomerDetailViewComponent,
+    ManagerListViewComponent,
+    ManagerDetailViewComponent
   ],
   imports: [
     BrowserModule,
