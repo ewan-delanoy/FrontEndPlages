@@ -1,13 +1,13 @@
 <div class="centering-container">
 
 <button *ngIf="isEditable"
-  (click)="treatReservation(false)"
+  (click)="treatReservation(true)"
   type="button"
   class="btn btn-success"
 >Accepter</button>
 
 <button *ngIf="isEditable"
-  (click)="treatReservation(true)"
+  (click)="treatReservation(false)"
   type="button"
   class="btn btn-danger"
 >Refuser</button>

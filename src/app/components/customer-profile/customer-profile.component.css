@@ -16,14 +16,17 @@
   color: black;
 }
 
-.navbar-below button:hover {
-  background-color: #333333;
-  color: #efefef;
+.navbar-below .active-link {
+  background-color: black;
+  color: white;
+}
+.navbar-below button:hover:enabled {
+  background-color: gray;
+  color: white;
 }
 
-
-.navbar-below .active-link {
-  background-color: #333333;
-  color: #efefef;
+.navbar-below .active-link:hover:enabled {
+  background-color: black;
+  color: white;
 }
 

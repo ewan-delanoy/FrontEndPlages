@@ -7,5 +7,36 @@
   color: white;
 }
 
+.navbar-below {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: yellow;
+  padding: 10px 20px;
+  color: white;
+}
+
+.navbar-below button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 15px;
+  border: none;
+  /* background-color: transparent; */
+  color: black;
+}
+
+.navbar-below .active-link {
+  background-color: black;
+  color: white;
+}
+.navbar-below button:hover:enabled {
+  background-color: gray;
+  color: white;
+}
+
+.navbar-below .active-link:hover:enabled {
+  background-color: black;
+  color: white;
+}
 
 

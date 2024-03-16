@@ -10,7 +10,6 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { TripleReservationComponent } from './components/triple-reservation/triple-reservation.component';
 import { ReservationBlockComponent } from './components/reservation-block/reservation-block.component';
-import { ManagerProfileComponent } from './components/manager-profile/manager-profile.component';
 import { FrencheuroPipe } from './pipes/frencheuro.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule} from "@angular/material/input";
@@ -26,11 +25,11 @@ import { HomeComponent } from './components/home/home.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { ManagerComponent } from './components/manager/manager.component';
 import { ReservationPayerComponent } from './components/reservation-payer/reservation-payer.component';
-import { CustomerProfileComponent } from './components/customer-profile/customer-profile.component';
 import { CustomerListViewComponent } from './components/customer-list-view/customer-list-view.component';
 import { CustomerDetailViewComponent } from './components/customer-detail-view/customer-detail-view.component';
 import { ManagerListViewComponent } from './components/manager-list-view/manager-list-view.component';
 import { ManagerDetailViewComponent } from './components/manager-detail-view/manager-detail-view.component';
+import { NombreParasolsPipe } from './pipes/nombre-parasols.pipe';
 
 @NgModule({
   declarations: [
@@ -39,8 +38,6 @@ import { ManagerDetailViewComponent } from './components/manager-detail-view/man
     SignupComponent,
     TripleReservationComponent,
     ReservationBlockComponent,
-    ManagerProfileComponent,
-    ReservationDetailComponent,
     FrencheuroPipe,
     ReservationStarterComponent,
     ParasolChooserComponent,
@@ -52,11 +49,11 @@ import { ManagerDetailViewComponent } from './components/manager-detail-view/man
     CustomerComponent,
     ManagerComponent,
     ReservationPayerComponent,
-    CustomerProfileComponent,
     CustomerListViewComponent,
     CustomerDetailViewComponent,
     ManagerListViewComponent,
-    ManagerDetailViewComponent
+    ManagerDetailViewComponent,
+    NombreParasolsPipe
   ],
   imports: [
     BrowserModule,
