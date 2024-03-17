@@ -87,8 +87,6 @@ export class ParasolChooserFrontEnd {
       )
     }
 
-
-
   }
 
   private selectParasol(idx:number) {

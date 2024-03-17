@@ -20,16 +20,16 @@ export class ParasolFrontEnd {
     if(parasolOutput && tousLesEquipements) {
       this.emplacement = parasolOutput.emplacement;
       this.isForSomeoneElse = parasolOutput.isForSomeoneElse;
-      // champs spécifique à la version front-end
+      // champs spécifiques à la version front-end
       this.isForMe = false
       this.equipement = tousLesEquipements[0]
     } else {
       this.emplacement = dummyEmplacementOutput
       this.isForSomeoneElse = 0
-      // champs spécifique à la version front-end
+      // champs spécifiques à la version front-end
       this.isForMe = false
+      // On met un dummy plutôt que null ici, pour éviter des problèmes avec null ailleurs
       this.equipement = dummyEquipementOutput
     }
  }
-
 }
