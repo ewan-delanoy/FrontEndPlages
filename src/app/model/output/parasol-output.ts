@@ -1,7 +1,6 @@
+import {EmplacementOutput} from "./emplacement-output";
 
 export interface ParasolOutput {
-  emplacementId: number;
-  numeroFile: number;
-  numEmplacement: number;
+  emplacement: EmplacementOutput
   isForSomeoneElse: number
 }

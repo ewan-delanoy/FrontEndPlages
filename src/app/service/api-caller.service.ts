@@ -26,7 +26,7 @@ export class ApiCallerService {
   paysUrl:string = `${this.endpoint}/api/pays` ;
   clientInscriptionUrl:string = `${this.endpoint}/api/clients` ;
   preparationUrl:string = `${this.endpoint}/api/clients/form-data` ;
-  reservationUrl:string = `${this.endpoint}/clients/reservation` ;
+  reservationUrl:string = `${this.endpoint}/api/clients/reservation` ;
   constructor(private http: HttpClient) { }
 
   editReservationStatus(concessionnaireId: number,reservationId:number,statusName:string) {

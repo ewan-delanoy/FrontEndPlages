@@ -1,4 +1,4 @@
-
+<div class="centering-div">
 <button
   (click)="cancelReservation()"
   type="button"
@@ -22,8 +22,9 @@
 >
   Payer
 </button>
-<br>
+</div>
 
+<div class="centering-container">
 Vous êtes sur le point de confirmer la réservation suivante :
 
 <br> Plage {{ nomPlage }},
@@ -32,20 +33,20 @@ gerée par {{ prenomConcessionnaire }} {{ nomConcessionnaire | uppercase }}, du
 
 Parasols : <br>
 
-<ul class="no-marker" *ngFor="let affectation of finishedChooser.affectations">
-  <li> File {{affectation.file.numero}},
-    Prix {{affectation.file.prixJournalier | frencheuro }},
-    place {{affectation.numEmplacement}},
+<ul class="no-marker" *ngFor="let affectation of affectations">
+  <li> File {{affectation.emplacement.file.numero}},
+    Prix {{affectation.emplacement.file.prixJournalier | frencheuro }},
+    place {{affectation.emplacement.numEmplacement}},
     {{ affectation.equipement.nom }}
   </li>
 </ul>
 
-Prix total <span *ngIf="lienDeParente.noDiscount">avant remise</span> :
-{{totalPrice | frencheuro }}<br>
+Prix total <span *ngIf="!(lienDeParente.noDiscount)">avant remise</span> :
+{{priceBeforeDiscount | frencheuro }}<br>
 <div *ngIf="!lienDeParente.noDiscount">
   Réduction familiale : {{ lienDeParente.coefficient }} <br>
-  Total final : {{totalPrice | frencheuro}} x {{ lienDeParente.coefficient }} =
-  {{ totalPrice * lienDeParente.coefficient | frencheuro }}
+  Total final : {{priceBeforeDiscount | frencheuro}} x {{ lienDeParente.coefficient }} =
+  {{ priceBeforeDiscount * lienDeParente.coefficient | frencheuro }}
 </div>
-
+</div>
 

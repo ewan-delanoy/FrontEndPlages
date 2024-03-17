@@ -16,11 +16,9 @@
 >Connexion </button>
 
 <nav class="navbar-below">
-  <button [routerLink]="['list']" routerLinkActive="active-link">Liste</button>
-  <button [routerLink]="['detail']" routerLinkActive="active-link" disabled >Détail</button>
-  <button [routerLink]="['start-reservation']" routerLinkActive="active-link" >Réserver</button>
-  <button [routerLink]="['review-reservation']" routerLinkActive="active-link" >Confirmer</button>
-  <button [routerLink]="['pay-reservation']" routerLinkActive="active-link" >Payer</button>
+  <button [routerLink]="['list']" routerLinkActive="active-link">Liste des factures</button>
+  <button [routerLink]="['detail']" routerLinkActive="active-link" disabled >Détail facture</button>
+  <button [routerLink]="['reservation/start']" routerLinkActive="active-link" >Réserver</button>
 </nav>
 
 <router-outlet></router-outlet>

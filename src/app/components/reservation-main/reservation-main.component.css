@@ -1,0 +1,31 @@
+.navbar-three {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: green;
+  padding: 10px 20px;
+  color: white;
+}
+
+.navbar-three button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 15px;
+  border: none;
+  /* background-color: transparent; */
+  color: black;
+}
+
+.navbar-three .active-link {
+  background-color: black;
+  color: white;
+}
+.navbar-three button:hover:enabled {
+  background-color: gray;
+  color: white;
+}
+
+.navbar-three .active-link:hover:enabled {
+  background-color: black;
+  color: white;
+}

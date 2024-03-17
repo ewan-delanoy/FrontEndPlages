@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import {ReservationOutput} from "../../model/output/reservation-output";
-import {dummyReservationOutput} from "../../shared/constants";
 import {StorageService} from "../../shared/storage.service";
-import {ApiCallerService} from "../../service/api-caller.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -11,18 +9,14 @@ import {Router} from "@angular/router";
   styleUrls: ['./customer-detail-view.component.css']
 })
 export class CustomerDetailViewComponent {
-  reservation: ReservationOutput = dummyReservationOutput
-  totalPrice: number = 0
-
+  reservation: ReservationOutput
 
 
   constructor(
     public storageService: StorageService,
-    public apiCaller:ApiCallerService,
     public router:Router
   ) {
-    this.reservation = this.storageService.getViewedReservation()
-    this.totalPrice = this.storageService.totalPrice
+    this.reservation = this.storageService.pastReservation
 
   }
 

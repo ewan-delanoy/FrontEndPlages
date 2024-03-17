@@ -12,6 +12,7 @@ import {CustomerListViewComponent} from "./components/customer-list-view/custome
 import {CustomerDetailViewComponent} from "./components/customer-detail-view/customer-detail-view.component";
 import {ManagerListViewComponent} from "./components/manager-list-view/manager-list-view.component";
 import {ManagerDetailViewComponent} from "./components/manager-detail-view/manager-detail-view.component";
+import {ReservationMainComponent} from "./components/reservation-main/reservation-main.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,11 +22,12 @@ const routes: Routes = [
   { path: 'customer', component: CustomerComponent, children: [
          { path: 'list', component: CustomerListViewComponent },
          { path: 'detail', component: CustomerDetailViewComponent },
-         { path: 'start-reservation', component: ReservationStarterComponent },
-         { path: 'review-reservation', component: ReservationOverviewerComponent },
-         { path: 'pay-reservation', component: ReservationPayerComponent },
+         { path: 'reservation', component: ReservationMainComponent, children: [
+                { path: 'start', component: ReservationStarterComponent },
+                { path: 'review', component: ReservationOverviewerComponent },
+                { path: 'pay', component: ReservationPayerComponent },
+           ]},
       ]},
-
   { path: 'manager', component: ManagerComponent, children: [
         { path: 'list', component: ManagerListViewComponent },
         { path: 'detail', component: ManagerDetailViewComponent }

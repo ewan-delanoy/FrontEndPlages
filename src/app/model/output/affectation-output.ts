@@ -1,8 +1,8 @@
 import {EquipementOutput} from "./equipement-output";
-import {FileOutput} from "./file-output";
+import {EmplacementOutput} from "./emplacement-output";
+
 
 export interface AffectationOutput {
-  file:FileOutput
-  numEmplacement: number
+  emplacement:EmplacementOutput
   equipement: EquipementOutput
 }

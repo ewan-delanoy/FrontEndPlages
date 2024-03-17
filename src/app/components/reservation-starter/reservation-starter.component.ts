@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ApiCallerService} from "../../service/api-caller.service";
 import {PlageOutput} from "../../model/output/plage-output";
 import {MatDatepickerInputEvent} from "@angular/material/datepicker";
@@ -26,6 +26,7 @@ export class ReservationStarterComponent {
   dateDebutRetour: (Date | null) = null
   dateFinRetour: (Date | null) = null
 
+
   constructor(private apiCaller: ApiCallerService,
               private storage:StorageService) {}
 
@@ -49,12 +50,11 @@ export class ReservationStarterComponent {
   }
 
   handlePlageSelection(nomPlage:string){
-    console.log("the selected value is " + nomPlage);
-    console.log("the list is :",this.plages)
+
     const plage:(PlageOutput|undefined) =
       this.plages.find( plage =>
       {return plage.nom === nomPlage})
-    console.log("just found :",plage)
+
     if (plage !== undefined) this.storage.reservationStarter.setPlage(plage)
     this.reloadParasolChooserIfNeeded()
   }
@@ -122,5 +122,7 @@ reloadParasolChooser():void {
     }
   )
 }
+
+
 
 }

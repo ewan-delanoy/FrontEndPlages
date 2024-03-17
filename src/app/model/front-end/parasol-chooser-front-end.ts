@@ -16,6 +16,8 @@ export class ParasolChooserFrontEnd {
   tousLesLiensDeParente : LienDeParenteOutput[]
   affectations:AffectationOutput[]
   lienDeParente: LienDeParenteOutput
+  totalAvantRemise: number
+  totalApresRemise: number
 
   // utilisé pour construire une instance vide
   constructor()
@@ -26,6 +28,8 @@ export class ParasolChooserFrontEnd {
     this.nbDemplacementsParFile = 0
     this.parasols = []
     this.affectations = []
+    this.totalAvantRemise = 0
+    this.totalApresRemise = 0
     if(preparation) {
       this.nbDeFiles = preparation.nbDeFiles
       this.nbDemplacementsParFile = preparation.nbDemplacementsParFile
@@ -40,12 +44,14 @@ export class ParasolChooserFrontEnd {
       for(let i=0; i<n; i++) {
         this.parasols.push(new ParasolFrontEnd(parasolsOutput[i],this.tousLesEquipements))
       }
-      console.log('NANABOZO1 found this ldp :',this.lienDeParente)
+
+
     } else {
         this.toutesLesFiles = []
         this.tousLesEquipements = []
         this.tousLesLiensDeParente = []
         this.lienDeParente = dummyLienDeParenteOutput
+
     }
 
 
@@ -73,8 +79,8 @@ export class ParasolChooserFrontEnd {
       this.affectations.forEach(
         affectation => {
           if(
-            (affectation.file.numero === this.parasols[idx].numeroFile)
-            && (affectation.numEmplacement === this.parasols[idx].numEmplacement)
+            (affectation.emplacement.file.numero === this.parasols[idx].emplacement.file.numero)
+            && (affectation.emplacement.numEmplacement === this.parasols[idx].emplacement.numEmplacement)
           ) {
             affectation.equipement = nouvelEquipement
           }}
@@ -87,27 +93,25 @@ export class ParasolChooserFrontEnd {
 
   private selectParasol(idx:number) {
     let parasol:ParasolFrontEnd = this.parasols[idx]
-    parasol.isForMe = true;
-
-    const laFile = this.toutesLesFiles.find( f =>
-    {return f.numero === parasol.numeroFile})
-
-    if(laFile !== undefined) {
-      this.affectations.push({
-        file: laFile,
-        numEmplacement: parasol.numEmplacement,
+    parasol.isForMe = true
+    this.affectations.push({
+        emplacement: parasol.emplacement,
         equipement: parasol.equipement
-      })
-    }
+    })
+    this.totalAvantRemise += parasol.emplacement.file.prixJournalier
+    this.totalApresRemise = this.totalAvantRemise * this.lienDeParente.coefficient
+
   }
 
   private unselectParasol(idx:number) {
     let parasol:ParasolFrontEnd = this.parasols[idx]
     parasol.isForMe = false;
     this.affectations = this.affectations.filter(affectation =>
-      (affectation.file.numero !== parasol.numeroFile)
-      || (affectation.numEmplacement !== parasol.numEmplacement)
+      (affectation.emplacement.file.numero !== parasol.emplacement.file.numero)
+      || (affectation.emplacement.numEmplacement !== parasol.emplacement.numEmplacement)
     )
+    this.totalAvantRemise -= parasol.emplacement.file.prixJournalier
+    this.totalApresRemise = this.totalAvantRemise * this.lienDeParente.coefficient
   }
 
   // met le lien de parenté par défaut au début

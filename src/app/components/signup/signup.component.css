@@ -1,73 +1,11 @@
-form {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  display: block;
-  width: 500px;
-  margin: 10px auto;
-}
-
-.formControlBlock {
-  display: block;
-  margin: 5px;
-  padding: 5px;
-  background-color: lightblue;
-}
-
-.formControlBlock label {
-  font-weight: 600;
-  color: black;
-}
-
-.formControlBlock input,
-.formControlBlock textarea {
-  width: calc(100% - 10px);
-}
-
-.formControlBlock label,
-.formControlBlock input,
-.formControlBlock textarea {
-  display: block;
-}
-
-button[type="submit"] {
-  /* display: block; */
-  margin: 5px auto;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 1.2em;
-  background-color: forestgreen;
-  color: white;
-  text-transform: uppercase;
-  border: none;
-}
-
-button[type="submit"]:not([disabled]):active {
-  border: 3px solid black;
-}
-
 button[type="submit"][disabled] {
   background-color: grey;
 }
 
-.ng-invalid:not(form) {
-  border: 2px solid red;
-  border-radius: 3px;
-}
-
-.error-block {
-  padding: 10px;
-  background-color: red;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-}
-
-/* Style du div conteneur  */
-.bordered-div {
-  background-color: #f7f7f7;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  text-align: center;
-  font-size: 16px;
-  margin: 20px;
+.centering-container {
+  max-width: 400px; /* Adjust max-width as needed */
+  margin: 0 auto; /* Centers the container horizontally */
+  padding: 20px; /* Adjust padding as needed */
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+  /* border: 2px solid #333; */
 }

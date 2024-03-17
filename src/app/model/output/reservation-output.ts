@@ -15,4 +15,6 @@ export interface ReservationOutput {
   numeroCarte: string
   anneeExpiration: number
   moisExpiration: number
+  totalAvantRemise: number
+  totalApresRemise: number
 }

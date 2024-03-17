@@ -1,3 +1,4 @@
+<div class="centering-container">
 <select class='select-plage' #plageSelector
         (change)='handlePlageSelection(plageSelector.value)'>
   <option [selected]="!(starterIsComplete)" disabled>Choisissez une plage</option>
@@ -10,7 +11,7 @@
           )</option>
 </select>
 
-<br>
+
 
 <mat-form-field>
   <mat-label>Date de début</mat-label>
@@ -38,3 +39,4 @@
 <br>
 <app-parasol-chooser *ngIf="starterIsComplete" [chooser]="parasolChooser"></app-parasol-chooser>
 
+</div>

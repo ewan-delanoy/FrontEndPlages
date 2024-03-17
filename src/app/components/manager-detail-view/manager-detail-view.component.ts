@@ -13,7 +13,6 @@ import {StatutEnum} from "../../model/front-end/statut-enum";
 })
 export class ManagerDetailViewComponent {
   reservation: ReservationOutput = dummyReservationOutput
-  totalPrice: number = 0
   isEditable : boolean = false
 
 
@@ -22,8 +21,7 @@ export class ManagerDetailViewComponent {
     public apiCaller:ApiCallerService,
     public router:Router
   ) {
-    this.reservation = this.storageService.getViewedReservation()
-    this.totalPrice = this.storageService.totalPrice
+    this.reservation = this.storageService.pastReservation
     this.isEditable = (this.reservation.statutNom == StatutEnum.Statut_en_attente.toString())
   }
   treatReservation(accepted:boolean) {

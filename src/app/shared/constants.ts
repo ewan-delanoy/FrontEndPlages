@@ -12,7 +12,9 @@ import {ID_UTILISATEUR_INEXISTANT} from "./numerical-constants";
 import {EquipementOutput} from "../model/output/equipement-output";
 import {ReservationInput} from "../model/input/reservation-input";
 import {PaysInput} from "../model/input/pays-input";
-import {PartialReservationInput} from "../model/input/partial-reservation-input";
+import {MonthFrontEnd} from "../model/front-end/month-front-end";
+import {EmplacementOutput} from "../model/output/emplacement-output";
+import {FileOutput} from "../model/output/file-output";
 
 
 
@@ -82,12 +84,24 @@ export const dummyReservationOutput:ReservationOutput = {
   numeroCarte: '',
   anneeExpiration: 0,
   moisExpiration: 0,
+  totalAvantRemise: 0,
+  totalApresRemise: 0
 }
 
 export const dummyEquipementOutput:EquipementOutput = {
   nom: '',
   nbDeLits: 0,
   nbDeFauteuils : 0
+}
+
+export const dummyFileOutput:FileOutput = {
+  numero: 0,
+  prixJournalier : 0
+}
+
+export const dummyEmplacementOutput:EmplacementOutput = {
+  file: dummyFileOutput,
+  numEmplacement : 0
 }
 
 export const dummyReservationInput:ReservationInput = {
@@ -103,15 +117,22 @@ export const dummyReservationInput:ReservationInput = {
   cryptogramme: ''
 }
 
-export const dummyPartialReservationInput:PartialReservationInput = {
-  clientId: 0,
-  plageId: 0,
-  affectations : [],
-  dateDebut: new Date(),
-  dateFin: new Date(),
-  lienDeParenteNom: ''
-}
 export const dummyPaysInput:PaysInput= {
   code :"",
   nom :""
 }
+
+export const tousLesMois: MonthFrontEnd[] = [
+  { nom : 'Janvier', numero: 1},
+  { nom : 'Février', numero: 2},
+  { nom : 'Mars', numero: 3},
+  { nom : 'Avril', numero: 4},
+  { nom : 'Mai', numero: 5},
+  { nom : 'Juin', numero: 6},
+  { nom : 'Juillet', numero: 7},
+  { nom : 'Août', numero: 8},
+  { nom : 'Septembre', numero: 9},
+  { nom : 'Octobre', numero: 10},
+  { nom : 'Novembre', numero: 11},
+  { nom : 'Décembre', numero: 12}
+]

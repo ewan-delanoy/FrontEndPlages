@@ -1,4 +1,4 @@
-import {Component,  Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ParasolChooserFrontEnd} from "../../model/front-end/parasol-chooser-front-end";
 import {LienDeParenteOutput} from "../../model/output/lien-de-parente-output";
 import {ParasolFrontEnd} from "../../model/front-end/parasol-front-end";
@@ -17,7 +17,6 @@ export class ParasolChooserComponent {
   files: null[] = []
   emplacements: null [] = []
 
-
   constructor(private storage: StorageService) {
   }
 
@@ -35,12 +34,11 @@ export class ParasolChooserComponent {
   }
 
   handleParasolToggle (e:ParasolFrontEnd)  {
-    this.chooser.toggleParasol(e.numeroFile,e.numEmplacement)
+    this.chooser.toggleParasol(e.emplacement.file.numero,e.emplacement.numEmplacement)
   }
 
   handleEquipementChange(numeroFile:number, numEmplacement:number, nomEquipement:string) {
     this.chooser.setEquipement(numeroFile, numEmplacement, nomEquipement)
-    console.log('affectations are now ', this.chooser.affectations)
   }
 
 

@@ -30,6 +30,7 @@ import { CustomerDetailViewComponent } from './components/customer-detail-view/c
 import { ManagerListViewComponent } from './components/manager-list-view/manager-list-view.component';
 import { ManagerDetailViewComponent } from './components/manager-detail-view/manager-detail-view.component';
 import { NombreParasolsPipe } from './pipes/nombre-parasols.pipe';
+import { ReservationMainComponent } from './components/reservation-main/reservation-main.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { NombreParasolsPipe } from './pipes/nombre-parasols.pipe';
     CustomerDetailViewComponent,
     ManagerListViewComponent,
     ManagerDetailViewComponent,
-    NombreParasolsPipe
+    NombreParasolsPipe,
+    ReservationMainComponent
   ],
   imports: [
     BrowserModule,

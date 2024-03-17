@@ -1,1 +1,66 @@
-<p>reservation-payer works!</p>
+<div class="centering-container">
+  <div class="form-signin w-100 m-auto">
+    <form [formGroup]="paymentForm" (ngSubmit)="pay()">
+      <h3 class="h3 mb-3 font-weight-normal text-center">Payez {{ prixTotal | frencheuro }}</h3>
+      <div class="mb-3">
+        <label>Numero Carte</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="numeroCarte" id="numeroCarte"
+          placeholder="Votre numéro de carte"
+          required
+        />
+      </div>
+      <div
+        *ngIf="errorMessageNecessaryForFormElement('numeroCarte')"
+        class="alert alert-danger"
+      >
+        <div *ngIf="formElementHasError('numeroCarte','required')"> Le numéro de carte est obligatoire.</div>
+        <div *ngIf="formElementHasError('numeroCarte','pattern')"> Numéro de carte invalide</div>
+
+      </div>
+      <div class="mb-3">
+        <label>Année d'expiration</label>
+        <select formControlName="anneeExpiration" id="anneeExpiration">
+          <option value="" disabled>Choisissez une année</option>
+          <option *ngFor="let annee of toutesLesAnnees" [value]="annee">
+            {{ annee }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label>Mois d'expiration</label>
+        <select formControlName="moisExpiration" id="moisExpiration">
+          <option value="" disabled>Choisissez un mois</option>
+          <option *ngFor="let mois of tousLesMois" [value]="mois.numero">
+              {{ mois.nom }} ({{ mois.numero | number:'2.0' }}) </option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label>Cryptogramme</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="cryptogramme"
+          placeholder="Code au dos de la carte"
+          required
+        />
+      </div>
+
+      <div
+        *ngIf="errorMessageNecessaryForFormElement('cryptogramme')"
+        class="alert alert-danger"
+      >
+        <div *ngIf="formElementHasError('cryptogramme','required')"> Le cryptogramme est obligatoire.</div>
+        <div *ngIf="formElementHasError('cryptogramme','pattern')"> Cryptogramme invalide</div>
+
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary" [disabled]="paymentForm.invalid">Envoyer</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+

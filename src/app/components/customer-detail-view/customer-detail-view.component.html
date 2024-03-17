@@ -20,20 +20,20 @@ Date fin : {{ reservation.dateFin | frenchDate }} <br>
 Parasols : <br>
 
 <ul class="no-marker" *ngFor="let affectation of reservation.affectations">
-  <li > File {{affectation.file.numero}},
-    {{affectation.file.prixJournalier | frencheuro }},
-    place {{affectation.numEmplacement}},
+  <li > File {{affectation.emplacement.file.numero}},
+    {{affectation.emplacement.file.prixJournalier | frencheuro }},
+    place {{affectation.emplacement.numEmplacement}},
     {{ affectation.equipement.nom }}
   </li>
 </ul>
 <br>
 
 Prix total <span *ngIf="reservation.lienDeParente.noDiscount">avant remise</span> :
-{{totalPrice | frencheuro }}<br>
+{{ reservation.totalAvantRemise | frencheuro }}<br>
 <div *ngIf="reservation.lienDeParente.noDiscount">
   Réduction familiale : {{ reservation.lienDeParente.coefficient }} <br>
-  Total final : {{totalPrice | frencheuro}} x {{ reservation.lienDeParente.coefficient }} =
-  {{totalPrice*reservation.lienDeParente.coefficient | frencheuro }}
+  Total final : {{ reservation.totalAvantRemise | frencheuro}} x {{ reservation.lienDeParente.coefficient }} =
+  {{reservation.totalAvantRemise * reservation.lienDeParente.coefficient | frencheuro }}
 </div>
 
 Payée avec la carte bleue numéro {{ reservation.numeroCarte }}, expirant le
