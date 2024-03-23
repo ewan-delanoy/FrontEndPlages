@@ -32,7 +32,7 @@ export class ManagerDetailViewComponent {
     const reservationId = this.reservation.reservationId;
     this.apiCaller.editReservationStatus(concessionnaireId,reservationId,statusName)
       .subscribe(() => {
-        this.router.navigate(['manager/profile/list']);
+        this.router.navigate(['manager/list']);
       });
 
 

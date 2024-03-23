@@ -11,7 +11,8 @@
 
   <option class='option'
           *ngFor='let lienDeParente of chooser.tousLesLiensDeParente'
-          [value]="lienDeParente.nom">{{lienDeParente.nom}}
+          [value]="lienDeParente.nom"
+         [selected]="lienDeParente.nom === chooser.lienDeParente.nom">{{lienDeParente.nom}}
          ({{lienDeParente.coefficient | reduction}})
   </option>
 </select>

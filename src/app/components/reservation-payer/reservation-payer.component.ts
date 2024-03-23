@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 import {ReservationInput} from "../../model/input/reservation-input";
 import {AffectationOutput} from "../../model/output/affectation-output";
 import {AffectationInput} from "../../model/input/affectation-input";
+import {ParasolChooserFrontEnd} from "../../model/front-end/parasol-chooser-front-end";
 
 @Component({
   selector: 'app-reservation-payer',
@@ -70,6 +71,8 @@ export class ReservationPayerComponent {
     }
     return this.apiCaller.sendReservation(reservationInput)
       .subscribe(() => {
+        this.storage.reservationDraftComplete = false
+        this.storage.parasolChooser = new ParasolChooserFrontEnd()
         this.router.navigate(['customer/list'])
       })
   }

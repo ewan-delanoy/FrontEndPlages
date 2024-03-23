@@ -7,7 +7,7 @@
     <tbody>
     <tr *ngFor="let reservation of reservations.list">
       {{ reservation.plage.nom }}
-      du {{ reservation.dateDebut }} au {{ reservation.dateFin }},
+      du {{ reservation.dateDebut | frenchDate }} au {{ reservation.dateFin | frenchDate }},
       {{ reservation.affectations.length | nombreParasols }}.
       <a class="blue-link" *ngIf="reservations.userIsAManager && reservations.notYetTreated"
          (click)="seeReservationDetail(true,reservation)" > Traiter </a>

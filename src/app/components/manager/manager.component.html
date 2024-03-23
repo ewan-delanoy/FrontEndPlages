@@ -16,6 +16,9 @@
   >Connexion </button>
 </nav>
 
-
+<nav class="navbar-below">
+  <button [routerLink]="['list']" routerLinkActive="active-link">Liste des factures</button>
+  <button [routerLink]="['detail']" routerLinkActive="active-link" disabled >Détail facture</button>
+</nav>
 
 <router-outlet></router-outlet>
