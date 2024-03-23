@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {LoginInput} from "../model/input/login-input";
-import {ApiCallerService} from "../service/api-caller.service";
-import {dummyUtilisateurOutput} from "./constants";
-import {ID_UTILISATEUR_INEXISTANT} from "./numerical-constants";
+import {ApiCallerService} from "./api-caller.service";
+import {dummyUtilisateurOutput} from "../shared/constants";
+import {ID_UTILISATEUR_INEXISTANT} from "../shared/numerical-constants";
 import {StorageService} from "./storage.service";
 
 
@@ -35,7 +35,7 @@ export class AuthService {
   }
 
 
-  get isLoggedIn(): boolean {
+  isLoggedIn(): boolean {
     return this.storage.currentUser.utilisateurId !== ID_UTILISATEUR_INEXISTANT
   }
 

@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {ParasolChooserFrontEnd} from "../../model/front-end/parasol-chooser-front-end";
 import {LienDeParenteOutput} from "../../model/output/lien-de-parente-output";
 import {ParasolFrontEnd} from "../../model/front-end/parasol-front-end";
-import {StorageService} from "../../shared/storage.service";
+import {StorageService} from "../../service/storage.service";
 
 
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {ApiCallerService} from "../../service/api-caller.service";
-import {StorageService} from "../../shared/storage.service";
+import {StorageService} from "../../service/storage.service";
 import {MonthFrontEnd} from "../../model/front-end/month-front-end";
 import {tousLesMois} from "../../shared/constants";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -74,6 +74,7 @@ export class ReservationPayerComponent {
         this.storage.reservationDraftComplete = false
         this.storage.parasolChooser = new ParasolChooserFrontEnd()
         this.router.navigate(['customer/list'])
+
       })
   }
 

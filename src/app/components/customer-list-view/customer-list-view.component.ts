@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {UtilisateurOutput} from "../../model/output/utilisateur-output";
 import {TripleReservationFrontEnd} from "../../model/front-end/triple-reservation-front-end";
-import {StorageService} from "../../shared/storage.service";
+import {StorageService} from "../../service/storage.service";
 import {ApiCallerService} from "../../service/api-caller.service";
 import {dummyTripleReservation} from "../../shared/constants";
 import {TripleReservationOutput} from "../../model/output/triple-reservation-output";
@@ -12,13 +12,13 @@ import {TripleReservationOutput} from "../../model/output/triple-reservation-out
   styleUrls: ['./customer-list-view.component.css']
 })
 export class CustomerListViewComponent {
-  currentUser: UtilisateurOutput;
+  currentUser: UtilisateurOutput
   reservations: TripleReservationFrontEnd
   constructor(
-    public storage: StorageService,
+    private storage: StorageService,
     private apiCaller: ApiCallerService
   ) {
-    this.currentUser = this.storage.currentUser;
+    this.currentUser = this.storage.currentUser
     this.reservations = dummyTripleReservation
   }
   ngOnInit() {
@@ -26,6 +26,10 @@ export class CustomerListViewComponent {
       (tripleReservations:TripleReservationOutput) => {
         this.reservations=
           new TripleReservationFrontEnd(false,tripleReservations);
+        console.log("This was before")
+        setTimeout(() => {
+          console.log("This is now")
+        }, 7000);
       }
     )
   }

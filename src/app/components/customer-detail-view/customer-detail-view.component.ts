@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {ReservationOutput} from "../../model/output/reservation-output";
-import {StorageService} from "../../shared/storage.service";
+import {StorageService} from "../../service/storage.service";
 import {Router} from "@angular/router";
 
 @Component({

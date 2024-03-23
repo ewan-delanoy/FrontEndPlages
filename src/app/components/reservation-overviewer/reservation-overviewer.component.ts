@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {dummyLienDeParenteOutput} from "../../shared/constants";
 import {ParasolChooserFrontEnd} from "../../model/front-end/parasol-chooser-front-end";
-import {StorageService} from "../../shared/storage.service";
+import {StorageService} from "../../service/storage.service";
 import {Router} from "@angular/router";
 import {AffectationOutput} from "../../model/output/affectation-output";
 import {LienDeParenteOutput} from "../../model/output/lien-de-parente-output";

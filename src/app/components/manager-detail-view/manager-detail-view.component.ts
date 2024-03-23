@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {ReservationOutput} from "../../model/output/reservation-output";
 import {dummyReservationOutput} from "../../shared/constants";
-import {StorageService} from "../../shared/storage.service";
+import {StorageService} from "../../service/storage.service";
 import {ApiCallerService} from "../../service/api-caller.service";
 import {Router} from "@angular/router";
 import {StatutEnum} from "../../model/front-end/statut-enum";

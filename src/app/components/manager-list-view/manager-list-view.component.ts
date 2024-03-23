@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {UtilisateurOutput} from "../../model/output/utilisateur-output";
 import {TripleReservationFrontEnd} from "../../model/front-end/triple-reservation-front-end";
-import {StorageService} from "../../shared/storage.service";
+import {StorageService} from "../../service/storage.service";
 import {ApiCallerService} from "../../service/api-caller.service";
 import {dummyTripleReservation} from "../../shared/constants";
 import {TripleReservationOutput} from "../../model/output/triple-reservation-output";

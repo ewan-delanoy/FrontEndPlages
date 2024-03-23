@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {ReservationOutput} from "../model/output/reservation-output";
-import { dummyReservationOutput, dummyUtilisateurOutput} from "./constants";
+import { dummyReservationOutput, dummyUtilisateurOutput} from "../shared/constants";
 import {ReservationStarterFrontEnd} from "../model/front-end/reservation-starter-front-end";
 import {ParasolChooserFrontEnd} from "../model/front-end/parasol-chooser-front-end";
 import {Router} from "@angular/router";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,6 @@ export class StorageService {
   reservationStarter: ReservationStarterFrontEnd = new ReservationStarterFrontEnd()
   parasolChooser: ParasolChooserFrontEnd = new ParasolChooserFrontEnd()
 
-
   constructor(private router: Router) { }
 
 
@@ -36,5 +36,6 @@ export class StorageService {
   clientConnecte():boolean {
     return this.currentUser.estUnClient
   }
+
 
 }

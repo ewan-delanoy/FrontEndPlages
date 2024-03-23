@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ApiCallerService} from "../../service/api-caller.service";
 import {PlageOutput} from "../../model/output/plage-output";
 import {MatDatepickerInputEvent} from "@angular/material/datepicker";
-import {StorageService} from "../../shared/storage.service";
+import {StorageService} from "../../service/storage.service";
 import {ParasolChooserFrontEnd} from "../../model/front-end/parasol-chooser-front-end";
 import {PreparationReservationOutput} from "../../model/output/preparation-reservation-output";
 import {PreparationReservationInput} from "../../model/input/preparation-reservation-input";
