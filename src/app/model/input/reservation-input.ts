@@ -4,8 +4,8 @@ export interface ReservationInput {
   clientId: number
   plageId: number
   affectations : AffectationInput[]
-  dateDebut: Date
-  dateFin: Date
+  dateDebut: string
+  dateFin: string
   lienDeParenteNom: string
   numeroCarte: string
   anneeExpiration: number

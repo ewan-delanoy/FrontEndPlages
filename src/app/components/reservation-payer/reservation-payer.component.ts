@@ -55,14 +55,19 @@ export class ReservationPayerComponent {
 
   pay() {
 
+    const dateDebutAjustee = this.storage.reservationStarter.dateDebut.toLocaleDateString('fr-FR')
+    const dateFinAjustee = this.storage.reservationStarter.dateFin.toLocaleDateString('fr-FR')
+
+
+
     let reservationInput:ReservationInput= {
       clientId: this.storage.currentUser.utilisateurId,
       plageId: this.storage.reservationStarter.plage.plageId,
       affectations: this.storage.parasolChooser.affectations.map(
         this.affectationOutputToInput
       ),
-      dateDebut: this.storage.reservationStarter.dateDebut,
-      dateFin: this.storage.reservationStarter.dateFin,
+      dateDebut: dateDebutAjustee,
+      dateFin: dateFinAjustee,
       lienDeParenteNom: this.storage.parasolChooser.lienDeParente.nom,
       numeroCarte : this.paymentForm.value.numeroCarte,
       anneeExpiration : this.paymentForm.value.anneeExpiration,

@@ -26,9 +26,8 @@ export class CustomerListViewComponent {
       (tripleReservations:TripleReservationOutput) => {
         this.reservations=
           new TripleReservationFrontEnd(false,tripleReservations);
-        console.log("This was before")
+
         setTimeout(() => {
-          console.log("This is now")
         }, 7000);
       }
     )
